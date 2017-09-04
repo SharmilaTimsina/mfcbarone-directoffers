@@ -1,0 +1,7 @@
+{
+    "version": "0.1.0",
+    "command": "gulb",
+    "isShellCommand": true,
+    "args": ["build", "."],
+    "showOutput": "always"
+}

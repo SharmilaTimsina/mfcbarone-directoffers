@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zeta.mobile.direct.offers</groupId>
+	<artifactId>dirrectoffersadmin</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>dirrectoffersadmin Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.spring.platform</groupId>
+				<artifactId>platform-bom</artifactId>
+				<version>1.1.2.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.zeta.mobile.direct.offers</groupId>
+			<artifactId>data</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zeta.mobile.direct.offers</groupId>
+			<artifactId>tpayconnector</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>directoffers</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugin</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>com.github.eirslett</groupId> <artifactId>frontend-maven-plugin</artifactId> 
+				<version>1.5</version> <configuration> <workingDirectory>${basedir}/frontend</workingDirectory> 
+				<srcdir>${basedir}/frontend</srcdir> <nodeVersion>v4.6.0</nodeVersion> </configuration> 
+				<executions> <execution> <id>install node and npm</id> <goals> <goal>install-node-and-npm</goal> 
+				</goals> <phase>generate-resources</phase> </execution> <execution> <id>npm 
+				install</id> <goals> <goal>npm</goal> </goals> <phase>generate-resources</phase> 
+				<configuration> <arguments>install</arguments> </configuration> </execution> 
+				<execution> <id>gulp build</id> <goals> <goal>gulp</goal> </goals> optional: 
+				the default phase is "generate-resources" <phase>generate-resources</phase> 
+				<configuration> <arguments>build</arguments> </configuration> </execution> 
+				</executions> </plugin> <plugin> <artifactId>maven-resources-plugin</artifactId> 
+				<version>3.0.2</version> <executions> <execution> <id>copy-resources</id> 
+				here the phase you need <phase>prepare-package</phase> <goals> <goal>copy-resources</goal> 
+				</goals> <configuration> <outputDirectory>${basedir}/src/main/webapp</outputDirectory> 
+				<resources> <resource> <directory>${basedir}/frontend/release</directory> 
+				<filtering>false</filtering> </resource> </resources> </configuration> </execution> 
+				</executions> </plugin> -->
+		</plugins>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-version>1.8</java-version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.7.4</org.aspectj-version>
+		<org.slf4j-version>1.7.5</org.slf4j-version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+	</properties>
+
+</project>
