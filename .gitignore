@@ -19,3 +19,5 @@ directoffersadmin/target/maven-status/maven-compiler-plugin/compile/default-comp
 /directoffersdata/.settings/*
 /Servers/*
 /tpayconnector/.settings/*
+/directoffersadmin/frontend/release/*
+/directoffersadmin/frontend/dev-release/*

@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dirrectoffersadmin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -86,13 +86,30 @@
 				<execution> <id>gulp build</id> <goals> <goal>gulp</goal> </goals> optional: 
 				the default phase is "generate-resources" <phase>generate-resources</phase> 
 				<configuration> <arguments>build</arguments> </configuration> </execution> 
-				</executions> </plugin> <plugin> <artifactId>maven-resources-plugin</artifactId> 
-				<version>3.0.2</version> <executions> <execution> <id>copy-resources</id> 
-				here the phase you need <phase>prepare-package</phase> <goals> <goal>copy-resources</goal> 
-				</goals> <configuration> <outputDirectory>${basedir}/src/main/webapp</outputDirectory> 
-				<resources> <resource> <directory>${basedir}/frontend/release</directory> 
-				<filtering>false</filtering> </resource> </resources> </configuration> </execution> 
 				</executions> </plugin> -->
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/webapp</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/frontend/release</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.ui.tabs', [])
+  angular.module('directoffers.pages.ui.tabs', [])
       .config(routeConfig);
 
   /** @ngInject */

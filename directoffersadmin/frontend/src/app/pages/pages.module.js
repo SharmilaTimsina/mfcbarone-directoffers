@@ -5,30 +5,28 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages', [
+  angular.module('directoffers.pages', [
     'ui.router',
-
-    'BlurAdmin.pages.dashboard',
-    'BlurAdmin.pages.ui',
-    'BlurAdmin.pages.components',
-    'BlurAdmin.pages.form',
-    'BlurAdmin.pages.tables',
-    'BlurAdmin.pages.charts',
-    'BlurAdmin.pages.maps',
-    'BlurAdmin.pages.profile',
-  ])
-      .config(routeConfig);
+    'directoffers.pages.dashboard',
+    'directoffers.pages.subscriptions'
+   /** 'directoffers.pages.ui',
+    'directoffers.pages.components',
+    'directoffers.pages.form',
+    'directoffers.pages.tables',
+    'directoffers.pages.charts',
+    'directoffers.pages.maps',
+    'directoffers.pages.profile',*/
+  ]).config(routeConfig);
 
   /** @ngInject */
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
     $urlRouterProvider.otherwise('/dashboard');
+  }
+  })();
 
-
-
-
-    
+  /*
     baSidebarServiceProvider.addStaticItem({
-      title: 'Pages',
+      title: 'Pages222222222',
       icon: 'ion-document',
       subMenu: [{
         title: 'Sign In',
@@ -64,3 +62,4 @@
   }
 
 })();
+*/
