@@ -22,7 +22,7 @@
           title: 'Subscriptions',
           sidebarMeta: {
             icon: 'ion-person-add',
-            order: 0,
+            order: 1,
           },
         });
   }

@@ -73,6 +73,10 @@ public class CurrenciesEntity implements Serializable {
 	@JsonBackReference
 	private List<ConnectionsEntity> listOfConnections;
 
+	@OneToMany(mappedBy = "currencies", targetEntity = PricepointplanEntity.class)
+	@JsonBackReference
+	private List<PricepointplanEntity> listOfPricepointplan;
+
 	// ----------------------------------------------------------------------
 	// CONSTRUCTOR(S)
 	// ----------------------------------------------------------------------
@@ -145,6 +149,14 @@ public class CurrenciesEntity implements Serializable {
 
 	public void setDecimalSeparator(String decimalSeparator) {
 		this.decimalSeparator = decimalSeparator;
+	}
+
+	public List<PricepointplanEntity> getListOfPricepointplan() {
+		return listOfPricepointplan;
+	}
+
+	public void setListOfPricepointplan(List<PricepointplanEntity> listOfPricepointplan) {
+		this.listOfPricepointplan = listOfPricepointplan;
 	}
 
 	@Override

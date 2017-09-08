@@ -8,21 +8,24 @@
   angular.module('directoffers.pages', [
     'ui.router',
     'directoffers.pages.dashboard',
+    'directoffers.pages.connections',
     'directoffers.pages.subscriptions'
-   /** 'directoffers.pages.ui',
-    'directoffers.pages.components',
-    'directoffers.pages.form',
-    'directoffers.pages.tables',
-    'directoffers.pages.charts',
-    'directoffers.pages.maps',
-    'directoffers.pages.profile',*/
+
+
+    /** 'directoffers.pages.ui',
+     'directoffers.pages.components',
+     'directoffers.pages.form',
+     'directoffers.pages.tables',
+     'directoffers.pages.charts',
+     'directoffers.pages.maps',
+     'directoffers.pages.profile',*/
   ]).config(routeConfig);
 
   /** @ngInject */
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
     $urlRouterProvider.otherwise('/dashboard');
   }
-  })();
+})();
 
   /*
     baSidebarServiceProvider.addStaticItem({

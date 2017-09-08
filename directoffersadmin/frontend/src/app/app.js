@@ -13,6 +13,8 @@ angular.module('directoffers', [
   'ngJsTree',
   'angular-progress-button-styles',
 
+  "directoffers.services",
+
   'directoffers.theme',
   'directoffers.pages'
 ]);

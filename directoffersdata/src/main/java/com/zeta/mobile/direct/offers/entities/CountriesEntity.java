@@ -13,7 +13,17 @@ import java.io.Serializable;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * Persistent class for entity stored in table "countries"
@@ -23,113 +33,123 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="countries", catalog="directoffers" )
+@Table(name = "countries", catalog = "directoffers")
 // Define named queries here
-@NamedQueries ( {
-  @NamedQuery ( name="CountriesEntity.countAll", query="SELECT COUNT(x) FROM CountriesEntity x" )
-} )
+@NamedQueries({ @NamedQuery(name = "CountriesEntity.countAll", query = "SELECT COUNT(x) FROM CountriesEntity x") })
 public class CountriesEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    //----------------------------------------------------------------------
-    // ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
-    //----------------------------------------------------------------------
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id", nullable=false)
-    private Integer    id           ;
+	// ----------------------------------------------------------------------
+	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
+	// ----------------------------------------------------------------------
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
+	// ----------------------------------------------------------------------
+	// ENTITY DATA FIELDS
+	// ----------------------------------------------------------------------
+	@Column(name = "localName")
+	private String localName;
 
-    //----------------------------------------------------------------------
-    // ENTITY DATA FIELDS 
-    //----------------------------------------------------------------------    
-    @Column(name="name", nullable=false)
-    private String     name         ;
+	@Column(name = "iso", nullable = false)
+	private String iso;
 
-    @Column(name="isoName", nullable=false)
-    private String     isoname      ;
+	@Column(name = "iso3")
+	private String iso3;
 
-    @Column(name="region", nullable=false)
-    private String     region       ;
+	@Column(name = "name", nullable = false)
+	private String name;
 
+	@Column(name = "isoCode")
+	private int isoCode;
 
+	@Column(name = "phoneCode")
+	private int phoneCode;
 
-    //----------------------------------------------------------------------
-    // ENTITY LINKS ( RELATIONSHIP )
-    //----------------------------------------------------------------------
-    @OneToMany(mappedBy="countries", targetEntity=CarriersEntity.class)
-    private List<CarriersEntity> listOfCarriers;
+	// `id`, `iso`, `name`, `englishName`, `iso3`, `isoCode`, `phonecode
 
+	// ----------------------------------------------------------------------
+	// ENTITY LINKS ( RELATIONSHIP )
+	// ----------------------------------------------------------------------
+	@OneToMany(mappedBy = "countries", targetEntity = CarriersEntity.class)
+	@JsonBackReference
+	private List<CarriersEntity> listOfCarriers;
 
-    //----------------------------------------------------------------------
-    // CONSTRUCTOR(S)
-    //----------------------------------------------------------------------
-    public CountriesEntity() {
+	// ----------------------------------------------------------------------
+	// CONSTRUCTOR(S)
+	// ----------------------------------------------------------------------
+	public CountriesEntity() {
 		super();
-    }
-    
-    //----------------------------------------------------------------------
-    // GETTER & SETTER FOR THE KEY FIELD
-    //----------------------------------------------------------------------
-    public void setId( Integer id ) {
-        this.id = id ;
-    }
-    public Integer getId() {
-        return this.id;
-    }
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR FIELDS
-    //----------------------------------------------------------------------
-    //--- DATABASE MAPPING : name ( TEXT ) 
-    public void setName( String name ) {
-        this.name = name;
-    }
-    public String getName() {
-        return this.name;
-    }
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR LINKS
+	// ----------------------------------------------------------------------
+	public void setListOfCarriers(List<CarriersEntity> listOfCarriers) {
+		this.listOfCarriers = listOfCarriers;
+	}
 
-    //--- DATABASE MAPPING : isoName ( TEXT ) 
-    public void setIsoname( String isoname ) {
-        this.isoname = isoname;
-    }
-    public String getIsoname() {
-        return this.isoname;
-    }
+	public List<CarriersEntity> getListOfCarriers() {
+		return this.listOfCarriers;
+	}
 
-    //--- DATABASE MAPPING : region ( TEXT ) 
-    public void setRegion( String region ) {
-        this.region = region;
-    }
-    public String getRegion() {
-        return this.region;
-    }
+	public Integer getId() {
+		return id;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR LINKS
-    //----------------------------------------------------------------------
-    public void setListOfCarriers( List<CarriersEntity> listOfCarriers ) {
-        this.listOfCarriers = listOfCarriers;
-    }
-    public List<CarriersEntity> getListOfCarriers() {
-        return this.listOfCarriers;
-    }
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    //----------------------------------------------------------------------
-    // toString METHOD
-    //----------------------------------------------------------------------
-    public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
-        sb.append("["); 
-        sb.append(id);
-        sb.append("]:"); 
-        // attribute 'name' not usable (type = String Long Text)
-        // attribute 'isoname' not usable (type = String Long Text)
-        // attribute 'region' not usable (type = String Long Text)
-        return sb.toString(); 
-    } 
+	public String getLocalName() {
+		return localName;
+	}
+
+	public void setLocalName(String localName) {
+		this.localName = localName;
+	}
+
+	public String getIso() {
+		return iso;
+	}
+
+	public void setIso(String iso) {
+		this.iso = iso;
+	}
+
+	public String getIso3() {
+		return iso3;
+	}
+
+	public void setIso3(String iso3) {
+		this.iso3 = iso3;
+	}
+
+	public int getIsoCode() {
+		return isoCode;
+	}
+
+	public void setIsoCode(int isoCode) {
+		this.isoCode = isoCode;
+	}
+
+	public int getPhoneCode() {
+		return phoneCode;
+	}
+
+	public void setPhoneCode(int phoneCode) {
+		this.phoneCode = phoneCode;
+	}
 
 }

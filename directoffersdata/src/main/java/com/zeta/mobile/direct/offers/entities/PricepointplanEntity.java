@@ -14,7 +14,21 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Persistent class for entity stored in table "pricepointplan"
@@ -24,221 +38,217 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="pricepointplan", catalog="directoffers" )
+@Table(name = "pricepointplan", catalog = "directoffers")
 // Define named queries here
-@NamedQueries ( {
-  @NamedQuery ( name="PricepointplanEntity.countAll", query="SELECT COUNT(x) FROM PricepointplanEntity x" )
-} )
+@NamedQueries({
+		@NamedQuery(name = "PricepointplanEntity.countAll", query = "SELECT COUNT(x) FROM PricepointplanEntity x") })
 public class PricepointplanEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    //----------------------------------------------------------------------
-    // ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
-    //----------------------------------------------------------------------
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id", nullable=false)
-    private Integer    id           ;
+	// ----------------------------------------------------------------------
+	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
+	// ----------------------------------------------------------------------
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
+	@Column(name = "external_id", nullable = false)
+	private String externalId;
 
-    //----------------------------------------------------------------------
-    // ENTITY DATA FIELDS 
-    //----------------------------------------------------------------------    
-    @Column(name="carrierId", nullable=false)
-    private Integer    carrierid    ;
+	// ----------------------------------------------------------------------
+	// ENTITY DATA FIELDS
+	// ----------------------------------------------------------------------
 
-    @Column(name="tax", nullable=false)
-    private Double     tax          ;
+	@Column(name = "value", nullable = false)
+	private Double value;
 
-    @Column(name="frequency", nullable=false)
-    private Integer    frequency    ;
+	@Column(name = "frequency", nullable = false)
+	private Integer frequency;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="start_period")
-    private Date       startPeriod  ;
+	@Column(name = "retry_on_fail")
+	private Boolean retryonfail;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="end_period")
-    private Date       endPeriod    ;
+	@Column(name = "retry_count")
+	private int retryCount;
 
-    @Column(name="retryOnFail")
-    private Byte       retryonfail  ;
+	@Column(name = "minutes_before_retry")
+	private int minutesBeforeRetry;
 
-    @Column(name="topUp", nullable=false)
-    private Byte       topup        ;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "creationDate")
+	private Date creationdate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="creationDate")
-    private Date       creationdate ;
+	@Column(name = "createdBy")
+	private String createdby;
 
-    @Column(name="createdBy")
-    private String     createdby    ;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "editionDate")
+	private Date editiondate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="editionDate")
-    private Date       editiondate  ;
+	@Column(name = "editedBy")
+	private String editedby;
 
-    @Column(name="editedBy")
-    private String     editedby     ;
+	@Column(name = "name")
+	private String name;
 
+	// ----------------------------------------------------------------------
+	// ENTITY LINKS ( RELATIONSHIP )
+	// ----------------------------------------------------------------------
+	@OneToMany(mappedBy = "pricepointplan", targetEntity = CampaignoffersEntity.class)
+	private List<CampaignoffersEntity> listOfCampaignoffers;
 
+	@JoinColumn(name = "carrierid", referencedColumnName = "id", insertable = false, updatable = false)
+	@ManyToOne
+	@JsonManagedReference
+	private CarriersEntity carrier;
 
-    //----------------------------------------------------------------------
-    // ENTITY LINKS ( RELATIONSHIP )
-    //----------------------------------------------------------------------
-    @OneToMany(mappedBy="pricepointplan", targetEntity=CampaignoffersEntity.class)
-    private List<CampaignoffersEntity> listOfCampaignoffers;
+	@JoinColumn(name = "currencyId", referencedColumnName = "id", insertable = false, updatable = false)
+	@ManyToOne
+	@JsonManagedReference
+	private CurrenciesEntity currencies;
 
-
-    //----------------------------------------------------------------------
-    // CONSTRUCTOR(S)
-    //----------------------------------------------------------------------
-    public PricepointplanEntity() {
+	// ----------------------------------------------------------------------
+	// CONSTRUCTOR(S)
+	// ----------------------------------------------------------------------
+	public PricepointplanEntity() {
 		super();
-    }
-    
-    //----------------------------------------------------------------------
-    // GETTER & SETTER FOR THE KEY FIELD
-    //----------------------------------------------------------------------
-    public void setId( Integer id ) {
-        this.id = id ;
-    }
-    public Integer getId() {
-        return this.id;
-    }
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR FIELDS
-    //----------------------------------------------------------------------
-    //--- DATABASE MAPPING : carrierId ( INT ) 
-    public void setCarrierid( Integer carrierid ) {
-        this.carrierid = carrierid;
-    }
-    public Integer getCarrierid() {
-        return this.carrierid;
-    }
+	// ----------------------------------------------------------------------
+	// GETTER & SETTER FOR THE KEY FIELD
+	// ----------------------------------------------------------------------
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    //--- DATABASE MAPPING : tax ( DOUBLE ) 
-    public void setTax( Double tax ) {
-        this.tax = tax;
-    }
-    public Double getTax() {
-        return this.tax;
-    }
+	public Integer getId() {
+		return this.id;
+	}
 
-    //--- DATABASE MAPPING : frequency ( INT ) 
-    public void setFrequency( Integer frequency ) {
-        this.frequency = frequency;
-    }
-    public Integer getFrequency() {
-        return this.frequency;
-    }
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR FIELDS
+	// ----------------------------------------------------------------------
+	// --- DATABASE MAPPING : carrierId ( INT )
+	public void setCarrier(CarriersEntity carrier) {
+		this.carrier = carrier;
+	}
 
-    //--- DATABASE MAPPING : start_period ( TIMESTAMP ) 
-    public void setStartPeriod( Date startPeriod ) {
-        this.startPeriod = startPeriod;
-    }
-    public Date getStartPeriod() {
-        return this.startPeriod;
-    }
+	public CarriersEntity getCarrier() {
+		return this.carrier;
+	}
 
-    //--- DATABASE MAPPING : end_period ( TIMESTAMP ) 
-    public void setEndPeriod( Date endPeriod ) {
-        this.endPeriod = endPeriod;
-    }
-    public Date getEndPeriod() {
-        return this.endPeriod;
-    }
+	// --- DATABASE MAPPING : frequency ( INT )
+	public void setFrequency(Integer frequency) {
+		this.frequency = frequency;
+	}
 
-    //--- DATABASE MAPPING : retryOnFail ( TINYINT ) 
-    public void setRetryonfail( Byte retryonfail ) {
-        this.retryonfail = retryonfail;
-    }
-    public Byte getRetryonfail() {
-        return this.retryonfail;
-    }
+	public Integer getFrequency() {
+		return this.frequency;
+	}
 
-    //--- DATABASE MAPPING : topUp ( TINYINT ) 
-    public void setTopup( Byte topup ) {
-        this.topup = topup;
-    }
-    public Byte getTopup() {
-        return this.topup;
-    }
+	// --- DATABASE MAPPING : creationDate ( TIMESTAMP )
+	public void setCreationdate(Date creationdate) {
+		this.creationdate = creationdate;
+	}
 
-    //--- DATABASE MAPPING : creationDate ( TIMESTAMP ) 
-    public void setCreationdate( Date creationdate ) {
-        this.creationdate = creationdate;
-    }
-    public Date getCreationdate() {
-        return this.creationdate;
-    }
+	public Date getCreationdate() {
+		return this.creationdate;
+	}
 
-    //--- DATABASE MAPPING : createdBy ( TEXT ) 
-    public void setCreatedby( String createdby ) {
-        this.createdby = createdby;
-    }
-    public String getCreatedby() {
-        return this.createdby;
-    }
+	// --- DATABASE MAPPING : createdBy ( TEXT )
+	public void setCreatedby(String createdby) {
+		this.createdby = createdby;
+	}
 
-    //--- DATABASE MAPPING : editionDate ( TIMESTAMP ) 
-    public void setEditiondate( Date editiondate ) {
-        this.editiondate = editiondate;
-    }
-    public Date getEditiondate() {
-        return this.editiondate;
-    }
+	public String getCreatedby() {
+		return this.createdby;
+	}
 
-    //--- DATABASE MAPPING : editedBy ( TEXT ) 
-    public void setEditedby( String editedby ) {
-        this.editedby = editedby;
-    }
-    public String getEditedby() {
-        return this.editedby;
-    }
+	// --- DATABASE MAPPING : editionDate ( TIMESTAMP )
+	public void setEditiondate(Date editiondate) {
+		this.editiondate = editiondate;
+	}
 
+	public Date getEditiondate() {
+		return this.editiondate;
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR LINKS
-    //----------------------------------------------------------------------
-    public void setListOfCampaignoffers( List<CampaignoffersEntity> listOfCampaignoffers ) {
-        this.listOfCampaignoffers = listOfCampaignoffers;
-    }
-    public List<CampaignoffersEntity> getListOfCampaignoffers() {
-        return this.listOfCampaignoffers;
-    }
+	public Double getValue() {
+		return value;
+	}
 
+	public void setValue(Double value) {
+		this.value = value;
+	}
 
-    //----------------------------------------------------------------------
-    // toString METHOD
-    //----------------------------------------------------------------------
-    public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
-        sb.append("["); 
-        sb.append(id);
-        sb.append("]:"); 
-        sb.append(carrierid);
-        sb.append("|");
-        sb.append(tax);
-        sb.append("|");
-        sb.append(frequency);
-        sb.append("|");
-        sb.append(startPeriod);
-        sb.append("|");
-        sb.append(endPeriod);
-        sb.append("|");
-        sb.append(retryonfail);
-        sb.append("|");
-        sb.append(topup);
-        sb.append("|");
-        sb.append(creationdate);
-        // attribute 'createdby' not usable (type = String Long Text)
-        sb.append("|");
-        sb.append(editiondate);
-        // attribute 'editedby' not usable (type = String Long Text)
-        return sb.toString(); 
-    } 
+	public Boolean getRetryonfail() {
+		return retryonfail;
+	}
+
+	public void setRetryonfail(Boolean retryonfail) {
+		this.retryonfail = retryonfail;
+	}
+
+	public int getRetryCount() {
+		return retryCount;
+	}
+
+	public void setRetryCount(int retryCount) {
+		this.retryCount = retryCount;
+	}
+
+	public int getMinutesBeforeRetry() {
+		return minutesBeforeRetry;
+	}
+
+	public void setMinutesBeforeRetry(int minutesBeforeRetry) {
+		this.minutesBeforeRetry = minutesBeforeRetry;
+	}
+
+	// --- DATABASE MAPPING : editedBy ( TEXT )
+	public void setEditedby(String editedby) {
+		this.editedby = editedby;
+	}
+
+	public String getEditedby() {
+		return this.editedby;
+	}
+
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR LINKS
+	// ----------------------------------------------------------------------
+	public void setListOfCampaignoffers(List<CampaignoffersEntity> listOfCampaignoffers) {
+		this.listOfCampaignoffers = listOfCampaignoffers;
+	}
+
+	public List<CampaignoffersEntity> getListOfCampaignoffers() {
+		return this.listOfCampaignoffers;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public CurrenciesEntity getCurrencies() {
+		return currencies;
+	}
+
+	public void setCurrencies(CurrenciesEntity currencies) {
+		this.currencies = currencies;
+	}
+
+	public String getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
 
 }

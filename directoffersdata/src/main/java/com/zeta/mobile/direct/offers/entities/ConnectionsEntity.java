@@ -28,6 +28,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -111,6 +112,7 @@ public class ConnectionsEntity implements Serializable {
 	private CurrenciesEntity currencies;
 
 	@OneToMany(mappedBy = "connections", targetEntity = CarriersEntity.class)
+	@JsonBackReference
 	private List<CarriersEntity> listOfCarriers;
 
 	@OneToMany(mappedBy = "connections", targetEntity = CampaignsEntity.class)

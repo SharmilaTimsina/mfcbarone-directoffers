@@ -28,7 +28,7 @@ public class AddSubscriptionRequest {
 	private String payment_transaction_status_code;
 	private String transaction_id;
 	private String error_message;
-	private Date next_payment_date; /* change to Boolean */
+	private Date next_payment_date;
 	private String subscription_contract_status;
 
 	public Date getCreated_at() {

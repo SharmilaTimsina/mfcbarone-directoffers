@@ -4,16 +4,24 @@
  */
 // This Bean has a composite Primary Key  
 
-
 package com.zeta.mobile.direct.offers.entities;
 
 import java.io.Serializable;
 
 //import javax.validation.constraints.* ;
 //import org.hibernate.validator.constraints.* ;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
-
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Persistent class for entity stored in table "carriers"
@@ -23,130 +31,152 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="carriers", catalog="directoffers" )
+@Table(name = "carriers", catalog = "directoffers")
 // Define named queries here
-@NamedQueries ( {
-  @NamedQuery ( name="CarriersEntity.countAll", query="SELECT COUNT(x) FROM CarriersEntity x" )
-} )
+@NamedQueries({ @NamedQuery(name = "CarriersEntity.countAll", query = "SELECT COUNT(x) FROM CarriersEntity x") })
 public class CarriersEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    //----------------------------------------------------------------------
-    // ENTITY PRIMARY KEY ( EMBEDDED IN AN EXTERNAL CLASS )  
-    //----------------------------------------------------------------------
-	@EmbeddedId
-    private CarriersEntityKey compositePrimaryKey ;
+	// ----------------------------------------------------------------------
+	// ENTITY PRIMARY KEY ( EMBEDDED IN AN EXTERNAL CLASS )
+	// ----------------------------------------------------------------------
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
+	// ----------------------------------------------------------------------
+	// ENTITY DATA FIELDS
+	// ----------------------------------------------------------------------
+	@Column(name = "networkCode", nullable = false)
+	private Integer networkcode;
 
-    //----------------------------------------------------------------------
-    // ENTITY DATA FIELDS 
-    //----------------------------------------------------------------------    
-    @Column(name="networkCode", nullable=false)
-    private Integer    networkcode  ;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name="name")
-    private String     name         ;
+	@Column(name = "msisdnRegexValidation")
+	private String msisdnRegexValidation;
 
+	@Column(name = "carrierRequirementsInfo")
+	private String carrierRequirementsInfo;
 
+	@Column(name = "carriersPriceLimitPerTransactionInfo")
+	private String carriersPriceLimitPerTransactionInfo;
 
-    //----------------------------------------------------------------------
-    // ENTITY LINKS ( RELATIONSHIP )
-    //----------------------------------------------------------------------
-    @ManyToOne
-    @JoinColumn(name="countryCode", referencedColumnName="id", insertable=false, updatable=false)
-    private CountriesEntity countries   ;
+	@Column(name = "monthlyTransactionLimitInfo")
+	private String monthlyTransactionLimitInfo;
 
-    @ManyToOne
-    @JoinColumn(name="connectionId", referencedColumnName="id", insertable=false, updatable=false)
-    private ConnectionsEntity connections ;
+	@Column(name = "allowDecimalsInfo")
+	private boolean allowDecimalsInfo;
 
+	// ----------------------------------------------------------------------
+	// ENTITY LINKS ( RELATIONSHIP )
+	// ----------------------------------------------------------------------
+	@ManyToOne
+	@JsonManagedReference
+	@JoinColumn(name = "countryId", referencedColumnName = "id", insertable = false, updatable = false)
+	private CountriesEntity countries;
 
-    //----------------------------------------------------------------------
-    // CONSTRUCTOR(S)
-    //----------------------------------------------------------------------
-    public CarriersEntity() {
-		super();
-		this.compositePrimaryKey = new CarriersEntityKey();       
-    }
-    
-    //----------------------------------------------------------------------
-    // GETTER & SETTER FOR THE COMPOSITE KEY 
-    //----------------------------------------------------------------------
-    public void setId( Integer id ) {
-        this.compositePrimaryKey.setId( id ) ;
-    }
-    public Integer getId() {
-        return this.compositePrimaryKey.getId() ;
-    }
-    public void setConnectionid( Integer connectionid ) {
-        this.compositePrimaryKey.setConnectionid( connectionid ) ;
-    }
-    public Integer getConnectionid() {
-        return this.compositePrimaryKey.getConnectionid() ;
-    }
-    public void setCountrycode( Integer countrycode ) {
-        this.compositePrimaryKey.setCountrycode( countrycode ) ;
-    }
-    public Integer getCountrycode() {
-        return this.compositePrimaryKey.getCountrycode() ;
-    }
+	@ManyToOne
+	@JsonManagedReference
+	@JoinColumn(name = "connectionId", referencedColumnName = "id", insertable = false, updatable = false)
+	private ConnectionsEntity connections;
 
+	// ----------------------------------------------------------------------
+	// CONSTRUCTOR(S)
+	// ----------------------------------------------------------------------
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR FIELDS
-    //----------------------------------------------------------------------
-    //--- DATABASE MAPPING : networkCode ( INT ) 
-    public void setNetworkcode( Integer networkcode ) {
-        this.networkcode = networkcode;
-    }
-    public Integer getNetworkcode() {
-        return this.networkcode;
-    }
+	// ----------------------------------------------------------------------
+	// GETTER & SETTER FOR THE COMPOSITE KEY
+	// ----------------------------------------------------------------------
 
-    //--- DATABASE MAPPING : name ( TEXT ) 
-    public void setName( String name ) {
-        this.name = name;
-    }
-    public String getName() {
-        return this.name;
-    }
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR FIELDS
+	// ----------------------------------------------------------------------
+	// --- DATABASE MAPPING : networkCode ( INT )
+	public void setNetworkcode(Integer networkcode) {
+		this.networkcode = networkcode;
+	}
 
+	public Integer getNetworkcode() {
+		return this.networkcode;
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR LINKS
-    //----------------------------------------------------------------------
-    public void setCountries( CountriesEntity countries ) {
-        this.countries = countries;
-    }
-    public CountriesEntity getCountries() {
-        return this.countries;
-    }
+	// --- DATABASE MAPPING : name ( TEXT )
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setConnections( ConnectionsEntity connections ) {
-        this.connections = connections;
-    }
-    public ConnectionsEntity getConnections() {
-        return this.connections;
-    }
+	public String getName() {
+		return this.name;
+	}
 
+	public Integer getId() {
+		return id;
+	}
 
-    //----------------------------------------------------------------------
-    // toString METHOD
-    //----------------------------------------------------------------------
-    public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
-        sb.append("["); 
-        if ( compositePrimaryKey != null ) {  
-            sb.append(compositePrimaryKey.toString());  
-        }  
-        else {  
-            sb.append( "(null-key)" ); 
-        }  
-        sb.append("]:"); 
-        sb.append(networkcode);
-        // attribute 'name' not usable (type = String Long Text)
-        return sb.toString(); 
-    } 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getMsisdnRegexValidation() {
+		return msisdnRegexValidation;
+	}
+
+	public void setMsisdnRegexValidation(String msisdnRegexValidation) {
+		this.msisdnRegexValidation = msisdnRegexValidation;
+	}
+
+	public String getCarrierRequirementsInfo() {
+		return carrierRequirementsInfo;
+	}
+
+	public void setCarrierRequirementsInfo(String carrierRequirementsInfo) {
+		this.carrierRequirementsInfo = carrierRequirementsInfo;
+	}
+
+	public String getCarriersPriceLimitPerTransactionInfo() {
+		return carriersPriceLimitPerTransactionInfo;
+	}
+
+	public void setCarriersPriceLimitPerTransactionInfo(String carriersPriceLimitPerTransactionInfo) {
+		this.carriersPriceLimitPerTransactionInfo = carriersPriceLimitPerTransactionInfo;
+	}
+
+	public String getMonthlyTransactionLimitInfo() {
+		return monthlyTransactionLimitInfo;
+	}
+
+	public void setMonthlyTransactionLimitInfo(String monthlyTransactionLimitInfo) {
+		this.monthlyTransactionLimitInfo = monthlyTransactionLimitInfo;
+	}
+
+	public boolean isAllowDecimalsInfo() {
+		return allowDecimalsInfo;
+	}
+
+	public void setAllowDecimalsInfo(boolean allowDecimalsInfo) {
+		this.allowDecimalsInfo = allowDecimalsInfo;
+	}
+
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR LINKS
+	// ----------------------------------------------------------------------
+	public void setCountries(CountriesEntity countries) {
+		this.countries = countries;
+	}
+
+	public CountriesEntity getCountries() {
+		return this.countries;
+	}
+
+	public void setConnections(ConnectionsEntity connections) {
+		this.connections = connections;
+	}
+
+	public ConnectionsEntity getConnections() {
+		return this.connections;
+	}
 
 }

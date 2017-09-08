@@ -1,4 +1,4 @@
-package com.zeta.mobile.direct.offers.tpayconnector.rest;
+package com.zeta.mobile.direct.offers.admin.rest;
 
 import java.util.ArrayList;
 

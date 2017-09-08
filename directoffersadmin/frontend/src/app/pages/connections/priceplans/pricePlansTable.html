@@ -1,0 +1,59 @@
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Price Plans
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="pricePlanPageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-hover" st-table="displayPricePlans" st-safe-src="pricePlans">
+    <thead>
+      <tr class="sortable">
+        <th class="table-id" st-sort="id" st-sort-default="true">Id</th>
+        <th st-sort="name">Name</th>
+        <th st-sort="externalId">External id</th>
+        <th st-sort="carrier.name">Carrier</th>
+        <th st-sort="carrier.countries.name">Country</th>
+        <th st-sort="frequency">Frequency</th>
+        <th st-sort="value">Value</th>
+        <th st-sort="currencies.isocode">Currency</th>
+        <th st-sort="retryonfail">Retry</th>
+        <th st-sort="minutesBeforeRetry">Retry after</th>
+        <th st-sort="retryCount">Num of Retries</th>
+      </tr>
+      <tr>
+        <th colspan="3"><input st-search="name" placeholder="Search by price plan name" class="input-sm form-control search-input" type="search"
+          /></th>
+        <th colspan="2"><input st-search="externalId" placeholder="Search by price plan external id" class="input-sm form-control search-input"
+            type="search" /></th>
+        <th colspan="3"><input st-search="carrier.name" placeholder="Search by operator name" class="input-sm form-control search-input"
+            type="search" /></th>
+        <th colspan="3"><input st-search="carrier.countries.name" placeholder="Search by country name" class="input-sm form-control search-input"
+            type="search" />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="plan in displayPricePlans">
+        <td class="table-id">{{plan.id}}</td>
+        <td>{{plan.name}}</td>
+        <td>{{plan.externalId}}</td>
+        <td>{{plan.carrier.name}}</td>
+        <td>{{plan.carrier.countries.name}}</td>
+        <td>{{plan.frequency}} days</td>
+        <td>{{plan.value}}</td>
+        <td>{{plan.currencies.isocode}}</td>
+        <td>{{plan.retryonfail}}</td>
+        <td>{{plan.minutesBeforeRetry}} min</td>
+        <td>{{plan.retryCount}} </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="11" class="text-center">
+          <div st-pagination="" st-items-by-page="pricePlanPageSize" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
