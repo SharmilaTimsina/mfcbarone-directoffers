@@ -66,13 +66,6 @@ public class CurrenciesEntity implements Serializable {
 	@Column(name = "decimalSeparator", nullable = false)
 	private String decimalSeparator;
 
-	// ----------------------------------------------------------------------
-	// ENTITY LINKS ( RELATIONSHIP )
-	// ----------------------------------------------------------------------
-	@OneToMany(mappedBy = "currencies", targetEntity = ConnectionsEntity.class)
-	@JsonBackReference
-	private List<ConnectionsEntity> listOfConnections;
-
 	@OneToMany(mappedBy = "currencies", targetEntity = PricepointplanEntity.class)
 	@JsonBackReference
 	private List<PricepointplanEntity> listOfPricepointplan;
@@ -116,17 +109,6 @@ public class CurrenciesEntity implements Serializable {
 		return this.isosymbol;
 	}
 
-	// ----------------------------------------------------------------------
-	// GETTERS & SETTERS FOR LINKS
-	// ----------------------------------------------------------------------
-	public void setListOfConnections(List<ConnectionsEntity> listOfConnections) {
-		this.listOfConnections = listOfConnections;
-	}
-
-	public List<ConnectionsEntity> getListOfConnections() {
-		return this.listOfConnections;
-	}
-
 	public String getCurrency() {
 		return currency;
 	}
@@ -163,7 +145,7 @@ public class CurrenciesEntity implements Serializable {
 	public String toString() {
 		return "CurrenciesEntity [id=" + id + ", currency=" + currency + ", isocode=" + isocode + ", isosymbol="
 				+ isosymbol + ", thousandsSeparator=" + thousandsSeparator + ", decimalSeparator=" + decimalSeparator
-				+ ", listOfConnections=" + listOfConnections + "]";
+				+ ", listOfPricepointplan=" + listOfPricepointplan + "]";
 	}
 
 }

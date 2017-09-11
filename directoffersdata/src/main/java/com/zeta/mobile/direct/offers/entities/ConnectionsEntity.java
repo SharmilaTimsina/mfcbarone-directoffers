@@ -19,8 +19,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,7 +27,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Persistent class for entity stored in table "connections"
@@ -103,19 +100,12 @@ public class ConnectionsEntity implements Serializable {
 	// "currencyid" (column "currencyId") is not defined by itself because used as
 	// FK in a link
 
-	// ----------------------------------------------------------------------
-	// ENTITY LINKS ( RELATIONSHIP )
-	// ----------------------------------------------------------------------
-	@ManyToOne
-	@JoinColumn(name = "currencyId", referencedColumnName = "id")
-	@JsonManagedReference
-	private CurrenciesEntity currencies;
-
 	@OneToMany(mappedBy = "connections", targetEntity = CarriersEntity.class)
 	@JsonBackReference
 	private List<CarriersEntity> listOfCarriers;
 
 	@OneToMany(mappedBy = "connections", targetEntity = CampaignsEntity.class)
+	@JsonBackReference
 	private List<CampaignsEntity> listOfCampaigns;
 
 	// ----------------------------------------------------------------------
@@ -252,13 +242,6 @@ public class ConnectionsEntity implements Serializable {
 	// ----------------------------------------------------------------------
 	// GETTERS & SETTERS FOR LINKS
 	// ----------------------------------------------------------------------
-	public void setCurrencies(CurrenciesEntity currencies) {
-		this.currencies = currencies;
-	}
-
-	public CurrenciesEntity getCurrencies() {
-		return this.currencies;
-	}
 
 	public void setListOfCarriers(List<CarriersEntity> listOfCarriers) {
 		this.listOfCarriers = listOfCarriers;

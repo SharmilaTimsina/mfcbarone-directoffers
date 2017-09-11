@@ -2,3 +2,22 @@
 
 // injector
 // endinjector
+
+
+
+.modal-phone-case {
+    position: relative;
+    z-index: 1;
+    width: 380px;
+    height: 810px;
+    background: url("https://ionicframework.com/img/phone-case.png") no-repeat right top;
+    margin-left: 20px; 
+}
+    
+iframe {
+    position: absolute;
+    width: 320px !important;
+    height: 568px;
+    top: 104px;
+    left: 37px; 
+}

@@ -1,0 +1,50 @@
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Campaigns list
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="campaignsPageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-hover" st-table="displayCampaigns" st-safe-src="campaigns">
+    <thead>
+      <tr class="sortable">
+        <th class="table-id" st-sort="id" st-sort-default="true">Id</th>
+        <th st-sort="name">Name</th>
+        <th st-sort="category">Category</th>
+        <th st-sort="extenalid">External Id</th>
+        <th st-sort="creationdate">Creation Date</th>
+        <th st-sort="connections.name">Partner</th>
+        <th st-sort="status">Status</th>
+
+      </tr>
+      <tr>
+        <th colspan="2"><input st-search="name" placeholder="Search by campaign name" class="input-sm form-control search-input" type="search"
+          /></th>
+        <th colspan="2"><input st-search="category" placeholder="Search by campaign category" class="input-sm form-control search-input"
+            type="search" /></th>
+        <th colspan="2"><input st-search="connections.name" placeholder="Search by partner name" class="input-sm form-control search-input"
+            type="search" /></th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="campaign in displayCampaigns">
+        <td class="table-id">{{campaign.id}}</td>
+        <td>{{campaign.name}}</td>
+        <td>{{campaign.category}}</td>
+        <td>{{campaign.extenalid}}</td>
+        <td>{{campaign.creationdate}}</td>
+        <td>{{campaign.connections.name}}</td>
+        <td>{{campaign.status}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="11" class="text-center">
+          <div st-pagination="" st-items-by-page="campaignsPageSize" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -1,0 +1,125 @@
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Campaigns list
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="campaignsPageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+
+  <!--
+       "id": 1,
+        "externalid": 60522,
+        "name": "MyAstro",
+        "prejumpurl": null,
+        "jumpurl": "http://zmobs.com/headerenrich.php",
+        "createdby": "pedro.sequeira",
+        "creationdate": 1504887798000,
+        "editedby": null,
+        "editiondate": null,
+        "pricepointplan": {
+            "id": 1,
+            "externalId": "ZM2",
+            "value": 2,
+            "frequency": 1,
+            "retryonfail": true,
+            "retryCount": 1,
+            "minutesBeforeRetry": 120,
+            "creationdate": 1504887798000,
+            "createdby": "pedro.sequeira",
+            "editiondate": null,
+            "editedby": null,
+            "name": "2EGP",
+            "payType": "DIRECTBILLING",
+            "carrier": {
+                "id": 1,
+                "networkcode": 60203,
+                "name": "Etisalat",
+                "msisdnRegexValidation": " ^(1)[0-2]\\d{8}\\b",
+                "carrierRequirementsInfo": "Active subscription contracts that did not pay for 45 continues days should be purged",
+                "carriersPriceLimitPerTransactionInfo": null,
+                "monthlyTransactionLimitInfo": null,
+                "allowDecimalsInfo": true,
+                "countries": {
+                    "id": 63,
+                    "localName": "EGYPT",
+                    "iso": "EG",
+                    "iso3": "EGY",
+                    "name": "Egypt",
+                    "isoCode": 818,
+                    "phoneCode": 20
+                },
+                "connections": {
+                    "id": 1,
+                    "name": "TPAY",
+                    "privateKey": "59wW4vviKrhSTEeumLDx",
+                    "publickey": "gGU58u2njocHrYMbJcKA",
+                    "zetaUser": "zeta@tpay.me",
+                    "zetaPassword": "StagingP@ssw0rd1234",
+                    "url": "http://staging.tpayadmin.tpay.me",
+                    "supportphonenumber": null,
+                    "supportemail": null,
+                    "supportskype": null,
+                    "integrationtype": "BROKER",
+                    "status": "ACTIVE",
+                    "statusDate": 1504887797000,
+                    "statusReason": "dev",
+                    "integrationProtocol": "HTTP"
+                }
+            },
+            "currencies": {
+                "id": 2,
+                "currency": "Pounds",
+                "isocode": "EGP",
+                "isosymbol": "Â£",
+                "thousandsSeparator": ",",
+                "decimalSeparator": "."
+            }
+        },
+        "campaigns": {
+            "id": 1,
+            "name": "MyAstro",
+  -->
+  <table class="table table-hover" st-table="displayOffers" st-safe-src="offers">
+    <thead>
+      <tr class="sortable">
+        <th class="table-id" st-sort="id" st-sort-default="true">Id</th>
+        <th st-sort="name">Name</th>
+        <th st-sort="externalid">External Id</th>
+        <th st-sort="campaigns.name">Campaign</th>
+        <th st-sort="prejumpurl">PreJump</th>
+        <th st-sort="jumpurl">Jump</th>
+        <th st-sort="pricepointplan.name">Price Plan</th>
+        <th st-sort="pricepointplan.carrier.name">Carrier</th>
+      </tr>
+      <tr>
+        <th colspan="3"><input st-search="name" placeholder="Search by campaign offer name" class="input-sm form-control search-input" type="search"
+          /></th>
+        <th colspan="3"><input st-search="externalid" placeholder="Search by campaign offer external id" class="input-sm form-control search-input"
+            type="search" /></th>
+        <th colspan="2"><input st-search="jump" placeholder="Search by jump url" class="input-sm form-control search-input" type="search"
+          /></th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="offer in displayOffers">
+        <td class="table-id">{{offer.id}}</td>
+        <td>{{offer.name}}</td>
+        <td>{{offer.externalid}}</td>
+        <td>{{offer.campaigns.name}}</td>
+        <td>{{offer.prejumpurl}}</td>
+        <td style="cursor: pointer" data-toggle="modal" ng-click="open(offer.jumpurl)">{{offer.jumpurl}}</td>
+        <td>{{offer.pricepointplan.name}}</td>
+        <td>{{offer.pricepointplan.carrier.name}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="11" class="text-center">
+          <div st-pagination="" st-items-by-page="campaignsPageSize" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

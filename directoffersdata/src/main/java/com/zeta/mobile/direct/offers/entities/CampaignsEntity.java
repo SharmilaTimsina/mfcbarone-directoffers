@@ -28,6 +28,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * Persistent class for entity stored in table "campaigns"
  *
@@ -55,26 +58,33 @@ public class CampaignsEntity implements Serializable {
 	// ENTITY DATA FIELDS
 	// ----------------------------------------------------------------------
 	@Column(name = "name", nullable = false)
-	private Integer name;
+	private String name;
 
-	@Column(name = "teste", nullable = false)
-	private Integer teste;
+	@Column(name = "category", nullable = false)
+	private String category;
 
-	@Column(name = "typeOfTraffic", nullable = false)
-	private String typeoftraffic;
-
-	@Column(name = "extenalId", nullable = false)
-	private Integer extenalid;
-
-	@Column(name = "countryId", nullable = false, length = 45)
-	private String countryid;
+	@Column(name = "externalId", nullable = false)
+	private String externalId;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "creationDate", nullable = false)
 	private Date creationdate;
 
 	@Column(name = "createdBy", nullable = false)
-	private String createdby;
+	private String createdBy;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "editionDate")
+	private Date edidate;
+
+	@Column(name = "editedBy")
+	private String editedBy;
+
+	@Column(name = "editedReason")
+	private String editedReason;
+
+	@Column(name = "status")
+	private String status;
 
 	// "connectionid" (column "connectionId") is not defined by itself because used
 	// as FK in a link
@@ -83,10 +93,12 @@ public class CampaignsEntity implements Serializable {
 	// ENTITY LINKS ( RELATIONSHIP )
 	// ----------------------------------------------------------------------
 	@OneToMany(mappedBy = "campaigns", targetEntity = CampaignoffersEntity.class)
+	@JsonBackReference
 	private List<CampaignoffersEntity> listOfCampaignoffers;
 
 	@ManyToOne
 	@JoinColumn(name = "connectionId", referencedColumnName = "id")
+	@JsonManagedReference
 	private ConnectionsEntity connections;
 
 	// ----------------------------------------------------------------------
@@ -111,47 +123,29 @@ public class CampaignsEntity implements Serializable {
 	// GETTERS & SETTERS FOR FIELDS
 	// ----------------------------------------------------------------------
 	// --- DATABASE MAPPING : name ( INT )
-	public void setName(Integer name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Integer getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public Integer getTeste() {
-		return teste;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setTeste(Integer teste) {
-		this.teste = teste;
-	}
-
-	// --- DATABASE MAPPING : typeOfTraffic ( TEXT )
-	public void setTypeoftraffic(String typeoftraffic) {
-		this.typeoftraffic = typeoftraffic;
-	}
-
-	public String getTypeoftraffic() {
-		return this.typeoftraffic;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	// --- DATABASE MAPPING : extenalId ( INT )
-	public void setExtenalid(Integer extenalid) {
-		this.extenalid = extenalid;
+	public void setExtenalid(String extenalid) {
+		this.externalId = extenalid;
 	}
 
-	public Integer getExtenalid() {
-		return this.extenalid;
-	}
-
-	// --- DATABASE MAPPING : countryId ( VARCHAR )
-	public void setCountryid(String countryid) {
-		this.countryid = countryid;
-	}
-
-	public String getCountryid() {
-		return this.countryid;
+	public String getExtenalid() {
+		return this.externalId;
 	}
 
 	// --- DATABASE MAPPING : creationDate ( TIMESTAMP )
@@ -165,51 +159,67 @@ public class CampaignsEntity implements Serializable {
 
 	// --- DATABASE MAPPING : createdBy ( TEXT )
 	public void setCreatedby(String createdby) {
-		this.createdby = createdby;
+		this.createdBy = createdby;
 	}
 
 	public String getCreatedby() {
-		return this.createdby;
+		return this.createdBy;
 	}
 
-	// ----------------------------------------------------------------------
-	// GETTERS & SETTERS FOR LINKS
-	// ----------------------------------------------------------------------
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getEdidate() {
+		return edidate;
+	}
+
+	public void setEdidate(Date edidate) {
+		this.edidate = edidate;
+	}
+
+	public String getEditedBy() {
+		return editedBy;
+	}
+
+	public void setEditedBy(String editedBy) {
+		this.editedBy = editedBy;
+	}
+
+	public String getEditedReason() {
+		return editedReason;
+	}
+
+	public void setEditedReason(String editedReason) {
+		this.editedReason = editedReason;
+	}
+
+	public List<CampaignoffersEntity> getListOfCampaignoffers() {
+		return listOfCampaignoffers;
+	}
+
 	public void setListOfCampaignoffers(List<CampaignoffersEntity> listOfCampaignoffers) {
 		this.listOfCampaignoffers = listOfCampaignoffers;
 	}
 
-	public List<CampaignoffersEntity> getListOfCampaignoffers() {
-		return this.listOfCampaignoffers;
+	public ConnectionsEntity getConnections() {
+		return connections;
 	}
 
 	public void setConnections(ConnectionsEntity connections) {
 		this.connections = connections;
 	}
 
-	public ConnectionsEntity getConnections() {
-		return this.connections;
+	public String getStatus() {
+		return status;
 	}
 
-	// ----------------------------------------------------------------------
-	// toString METHOD
-	// ----------------------------------------------------------------------
-	@Override
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("[");
-		sb.append(id);
-		sb.append("]:");
-		sb.append(name);
-		// attribute 'typeoftraffic' not usable (type = String Long Text)
-		sb.append("|");
-		sb.append(extenalid);
-		sb.append("|");
-		sb.append(countryid);
-		sb.append("|");
-		sb.append(creationdate);
-		// attribute 'createdby' not usable (type = String Long Text)
-		return sb.toString();
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

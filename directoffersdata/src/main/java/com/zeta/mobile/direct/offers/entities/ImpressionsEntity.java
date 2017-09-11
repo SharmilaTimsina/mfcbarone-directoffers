@@ -14,7 +14,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Persistent class for entity stored in table "impressions"
@@ -24,200 +37,209 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="impressions", catalog="directoffers" )
+@Table(name = "impressions", catalog = "directoffers")
 // Define named queries here
-@NamedQueries ( {
-  @NamedQuery ( name="ImpressionsEntity.countAll", query="SELECT COUNT(x) FROM ImpressionsEntity x" )
-} )
+@NamedQueries({ @NamedQuery(name = "ImpressionsEntity.countAll", query = "SELECT COUNT(x) FROM ImpressionsEntity x") })
 public class ImpressionsEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    //----------------------------------------------------------------------
-    // ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
-    //----------------------------------------------------------------------
-    @Id
-    @Column(name="id", nullable=false)
-    private Integer    id           ;
+	// ----------------------------------------------------------------------
+	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
+	// ----------------------------------------------------------------------
+	@Id
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
+	// ----------------------------------------------------------------------
+	// ENTITY DATA FIELDS
+	// ----------------------------------------------------------------------
+	@Column(name = "msisdn")
+	private String msisdn;
 
-    //----------------------------------------------------------------------
-    // ENTITY DATA FIELDS 
-    //----------------------------------------------------------------------    
-    @Column(name="msisdn")
-    private String     msisdn       ;
+	@Column(name = "screenSize")
+	private String screensize;
 
-    @Column(name="screenSize")
-    private String     screensize   ;
+	@Column(name = "timeZone")
+	private Integer timezone;
 
-    @Column(name="timeZone")
-    private Integer    timezone     ;
+	@Column(name = "broswerLanguage")
+	private String broswerlanguage;
 
-    @Column(name="broswerLanguage")
-    private String     broswerlanguage ;
+	@Column(name = "platform")
+	private String platform;
 
-    @Column(name="platform")
-    private String     platform     ;
+	@Column(name = "broswer")
+	private String broswer;
 
-    @Column(name="broswer")
-    private String     broswer      ;
+	@Column(name = "sourceIp")
+	private String sourceip;
 
-    @Column(name="sourceIp")
-    private String     sourceip     ;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "creationDate")
+	private Date creationdate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="creationDate")
-    private Date       creationdate ;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createdBy")
+	private Date createdby;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="createdBy")
-    private Date       createdby    ;
+	// "offerid" (column "offerId") is not defined by itself because used as FK in a
+	// link
 
-	// "offerid" (column "offerId") is not defined by itself because used as FK in a link 
+	// ----------------------------------------------------------------------
+	// ENTITY LINKS ( RELATIONSHIP )
+	// ----------------------------------------------------------------------
+	@ManyToOne
+	@JoinColumn(name = "offerId", referencedColumnName = "id")
+	@JsonManagedReference
+	private CampaignoffersEntity campaignoffers;
 
+	@OneToMany(mappedBy = "impressions", targetEntity = SubscriptionsEntity.class)
+	@JsonBackReference
+	private List<SubscriptionsEntity> listOfSubscriptions;
 
-    //----------------------------------------------------------------------
-    // ENTITY LINKS ( RELATIONSHIP )
-    //----------------------------------------------------------------------
-    @ManyToOne
-    @JoinColumn(name="offerId", referencedColumnName="id")
-    private CampaignoffersEntity campaignoffers;
-
-    @OneToMany(mappedBy="impressions", targetEntity=SubscriptionsEntity.class)
-    private List<SubscriptionsEntity> listOfSubscriptions;
-
-
-    //----------------------------------------------------------------------
-    // CONSTRUCTOR(S)
-    //----------------------------------------------------------------------
-    public ImpressionsEntity() {
+	// ----------------------------------------------------------------------
+	// CONSTRUCTOR(S)
+	// ----------------------------------------------------------------------
+	public ImpressionsEntity() {
 		super();
-    }
-    
-    //----------------------------------------------------------------------
-    // GETTER & SETTER FOR THE KEY FIELD
-    //----------------------------------------------------------------------
-    public void setId( Integer id ) {
-        this.id = id ;
-    }
-    public Integer getId() {
-        return this.id;
-    }
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR FIELDS
-    //----------------------------------------------------------------------
-    //--- DATABASE MAPPING : msisdn ( TEXT ) 
-    public void setMsisdn( String msisdn ) {
-        this.msisdn = msisdn;
-    }
-    public String getMsisdn() {
-        return this.msisdn;
-    }
+	// ----------------------------------------------------------------------
+	// GETTER & SETTER FOR THE KEY FIELD
+	// ----------------------------------------------------------------------
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    //--- DATABASE MAPPING : screenSize ( TEXT ) 
-    public void setScreensize( String screensize ) {
-        this.screensize = screensize;
-    }
-    public String getScreensize() {
-        return this.screensize;
-    }
+	public Integer getId() {
+		return this.id;
+	}
 
-    //--- DATABASE MAPPING : timeZone ( INT ) 
-    public void setTimezone( Integer timezone ) {
-        this.timezone = timezone;
-    }
-    public Integer getTimezone() {
-        return this.timezone;
-    }
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR FIELDS
+	// ----------------------------------------------------------------------
+	// --- DATABASE MAPPING : msisdn ( TEXT )
+	public void setMsisdn(String msisdn) {
+		this.msisdn = msisdn;
+	}
 
-    //--- DATABASE MAPPING : broswerLanguage ( TEXT ) 
-    public void setBroswerlanguage( String broswerlanguage ) {
-        this.broswerlanguage = broswerlanguage;
-    }
-    public String getBroswerlanguage() {
-        return this.broswerlanguage;
-    }
+	public String getMsisdn() {
+		return this.msisdn;
+	}
 
-    //--- DATABASE MAPPING : platform ( TEXT ) 
-    public void setPlatform( String platform ) {
-        this.platform = platform;
-    }
-    public String getPlatform() {
-        return this.platform;
-    }
+	// --- DATABASE MAPPING : screenSize ( TEXT )
+	public void setScreensize(String screensize) {
+		this.screensize = screensize;
+	}
 
-    //--- DATABASE MAPPING : broswer ( TEXT ) 
-    public void setBroswer( String broswer ) {
-        this.broswer = broswer;
-    }
-    public String getBroswer() {
-        return this.broswer;
-    }
+	public String getScreensize() {
+		return this.screensize;
+	}
 
-    //--- DATABASE MAPPING : sourceIp ( TEXT ) 
-    public void setSourceip( String sourceip ) {
-        this.sourceip = sourceip;
-    }
-    public String getSourceip() {
-        return this.sourceip;
-    }
+	// --- DATABASE MAPPING : timeZone ( INT )
+	public void setTimezone(Integer timezone) {
+		this.timezone = timezone;
+	}
 
-    //--- DATABASE MAPPING : creationDate ( TIMESTAMP ) 
-    public void setCreationdate( Date creationdate ) {
-        this.creationdate = creationdate;
-    }
-    public Date getCreationdate() {
-        return this.creationdate;
-    }
+	public Integer getTimezone() {
+		return this.timezone;
+	}
 
-    //--- DATABASE MAPPING : createdBy ( TIMESTAMP ) 
-    public void setCreatedby( Date createdby ) {
-        this.createdby = createdby;
-    }
-    public Date getCreatedby() {
-        return this.createdby;
-    }
+	// --- DATABASE MAPPING : broswerLanguage ( TEXT )
+	public void setBroswerlanguage(String broswerlanguage) {
+		this.broswerlanguage = broswerlanguage;
+	}
 
+	public String getBroswerlanguage() {
+		return this.broswerlanguage;
+	}
 
-    //----------------------------------------------------------------------
-    // GETTERS & SETTERS FOR LINKS
-    //----------------------------------------------------------------------
-    public void setCampaignoffers( CampaignoffersEntity campaignoffers ) {
-        this.campaignoffers = campaignoffers;
-    }
-    public CampaignoffersEntity getCampaignoffers() {
-        return this.campaignoffers;
-    }
+	// --- DATABASE MAPPING : platform ( TEXT )
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
 
-    public void setListOfSubscriptions( List<SubscriptionsEntity> listOfSubscriptions ) {
-        this.listOfSubscriptions = listOfSubscriptions;
-    }
-    public List<SubscriptionsEntity> getListOfSubscriptions() {
-        return this.listOfSubscriptions;
-    }
+	public String getPlatform() {
+		return this.platform;
+	}
 
+	// --- DATABASE MAPPING : broswer ( TEXT )
+	public void setBroswer(String broswer) {
+		this.broswer = broswer;
+	}
 
-    //----------------------------------------------------------------------
-    // toString METHOD
-    //----------------------------------------------------------------------
-    public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
-        sb.append("["); 
-        sb.append(id);
-        sb.append("]:"); 
-        // attribute 'msisdn' not usable (type = String Long Text)
-        // attribute 'screensize' not usable (type = String Long Text)
-        sb.append(timezone);
-        // attribute 'broswerlanguage' not usable (type = String Long Text)
-        // attribute 'platform' not usable (type = String Long Text)
-        // attribute 'broswer' not usable (type = String Long Text)
-        // attribute 'sourceip' not usable (type = String Long Text)
-        sb.append("|");
-        sb.append(creationdate);
-        sb.append("|");
-        sb.append(createdby);
-        return sb.toString(); 
-    } 
+	public String getBroswer() {
+		return this.broswer;
+	}
+
+	// --- DATABASE MAPPING : sourceIp ( TEXT )
+	public void setSourceip(String sourceip) {
+		this.sourceip = sourceip;
+	}
+
+	public String getSourceip() {
+		return this.sourceip;
+	}
+
+	// --- DATABASE MAPPING : creationDate ( TIMESTAMP )
+	public void setCreationdate(Date creationdate) {
+		this.creationdate = creationdate;
+	}
+
+	public Date getCreationdate() {
+		return this.creationdate;
+	}
+
+	// --- DATABASE MAPPING : createdBy ( TIMESTAMP )
+	public void setCreatedby(Date createdby) {
+		this.createdby = createdby;
+	}
+
+	public Date getCreatedby() {
+		return this.createdby;
+	}
+
+	// ----------------------------------------------------------------------
+	// GETTERS & SETTERS FOR LINKS
+	// ----------------------------------------------------------------------
+	public void setCampaignoffers(CampaignoffersEntity campaignoffers) {
+		this.campaignoffers = campaignoffers;
+	}
+
+	public CampaignoffersEntity getCampaignoffers() {
+		return this.campaignoffers;
+	}
+
+	public void setListOfSubscriptions(List<SubscriptionsEntity> listOfSubscriptions) {
+		this.listOfSubscriptions = listOfSubscriptions;
+	}
+
+	public List<SubscriptionsEntity> getListOfSubscriptions() {
+		return this.listOfSubscriptions;
+	}
+
+	// ----------------------------------------------------------------------
+	// toString METHOD
+	// ----------------------------------------------------------------------
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("[");
+		sb.append(id);
+		sb.append("]:");
+		// attribute 'msisdn' not usable (type = String Long Text)
+		// attribute 'screensize' not usable (type = String Long Text)
+		sb.append(timezone);
+		// attribute 'broswerlanguage' not usable (type = String Long Text)
+		// attribute 'platform' not usable (type = String Long Text)
+		// attribute 'broswer' not usable (type = String Long Text)
+		// attribute 'sourceip' not usable (type = String Long Text)
+		sb.append("|");
+		sb.append(creationdate);
+		sb.append("|");
+		sb.append(createdby);
+		return sb.toString();
+	}
 
 }

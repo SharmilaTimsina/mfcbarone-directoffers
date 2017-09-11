@@ -6,25 +6,24 @@
   'use strict';
 
   angular.module('directoffers.pages.subscriptions', [
-    'directoffers.pages.subscriptions.overview',
     'directoffers.pages.subscriptions.campaigns',
     'directoffers.pages.subscriptions.offers'
   ])
-      .config(routeConfig);
+    .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('subscriptions', {
-          url: '/subscriptions',
-          abstract: true,
-          templateUrl: 'app/pages/subscriptions/subscriptions.html',
-          title: 'Subscriptions',
-          sidebarMeta: {
-            icon: 'ion-person-add',
-            order: 1,
-          },
-        });
+      .state('subscriptions', {
+        url: '/subscriptions',
+        abstract: true,
+        templateUrl: 'app/pages/subscriptions/subscriptions.html',
+        title: 'Subscriptions',
+        sidebarMeta: {
+          icon: 'ion-person-add',
+          order: 1,
+        },
+      });
   }
 
 })();

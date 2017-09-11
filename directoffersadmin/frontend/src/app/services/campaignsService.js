@@ -2,14 +2,14 @@
     'use strict';
 
     angular.module('directoffers.services')
-        .service('carriersService', carriersService);
+        .service('campaignsService', campaignsService);
 
-    function carriersService($http, serviceConfiguration) {
+    function campaignsService($http, serviceConfiguration) {
         var baseUrl = serviceConfiguration.getServerRestUrl();
         var dataFactory = {};
 
         dataFactory.retrieveAll = function () {
-            return $http.get(baseUrl + "carriers/all");
+            return $http.get(baseUrl + "campaigns/all");
         };
 
         return dataFactory;

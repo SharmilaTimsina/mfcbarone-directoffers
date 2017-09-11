@@ -6,19 +6,20 @@
   'use strict';
 
   angular.module('directoffers.pages.subscriptions.campaigns', [])
-      .config(routeConfig);
+    .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('subscriptions.campaigns', {
-          url: '/campaigns',
-          templateUrl: 'app/pages/subscriptions/campaigns/campaigns.html',
-          title: 'Campaigns',
-          sidebarMeta: {
-            order: 1,
-          },
-        });
+      .state('subscriptions.campaigns', {
+        url: '/campaigns',
+        templateUrl: 'app/pages/subscriptions/campaigns/campaigns.html',
+        title: 'Campaigns',
+        controller: 'CampaignsCtrl',
+        sidebarMeta: {
+          order: 0,
+        },
+      });
   }
 
 })();

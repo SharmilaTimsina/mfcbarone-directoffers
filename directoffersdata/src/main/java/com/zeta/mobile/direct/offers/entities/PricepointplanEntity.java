@@ -28,6 +28,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -93,10 +94,14 @@ public class PricepointplanEntity implements Serializable {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "pay_type")
+	private String payType;
+
 	// ----------------------------------------------------------------------
 	// ENTITY LINKS ( RELATIONSHIP )
 	// ----------------------------------------------------------------------
 	@OneToMany(mappedBy = "pricepointplan", targetEntity = CampaignoffersEntity.class)
+	@JsonBackReference
 	private List<CampaignoffersEntity> listOfCampaignoffers;
 
 	@JoinColumn(name = "carrierid", referencedColumnName = "id", insertable = false, updatable = false)
@@ -249,6 +254,14 @@ public class PricepointplanEntity implements Serializable {
 
 	public void setExternalId(String externalId) {
 		this.externalId = externalId;
+	}
+
+	public String getPayType() {
+		return payType;
+	}
+
+	public void setPayType(String payType) {
+		this.payType = payType;
 	}
 
 }

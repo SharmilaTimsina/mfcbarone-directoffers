@@ -3,8 +3,8 @@ INSERT INTO `directoffers`.`currencies` (`id`, `currency`, `iso_code`,  `iso_sym
 INSERT INTO `directoffers`.`currencies` (`id`, `currency`, `iso_code`,  `iso_symbol`, `thousands_separator`, `decimal_separator`) VALUES ('2', 'Pounds', 'EGP', '£', ',', '.')
 
 --Connections Table
-INSERT INTO `directoffers`.`connections` (`id`, `integration_protocol`, `integration_type`, `name`, `privatekey`, `public_key`, `status`, `status_date`, `status_reason`, `url`, `zeta_password`, `zeta_user`, `currency_id`) VALUES ('1', 'HTTP', 'BROKER', 'TPAY', '59wW4vviKrhSTEeumLDx', 'gGU58u2njocHrYMbJcKA', 'ACTIVE', NOW(), 'dev', 'http://staging.tpayadmin.tpay.me', 'StagingP@ssw0rd1234', 'zeta@tpay.me', '1');
-INSERT INTO `directoffers`.`connections` (`id`, `integration_protocol`, `integration_type`, `name`, `privatekey`, `public_key`, `status`, `status_date`, `status_reason`, `url`, `zeta_password`, `zeta_user`, `currency_id`) VALUES ('2', 'SMPP', 'CARRIER', 'TESTE', '59wW4vviKrhSTEeumLDx', 'gGU58u2njocHrYMbJcKA', 'ACTIVE', NOW(), 'dev', 'http://staging.tpayadmin.tpay.me', 'StagingP@ssw0rd1234', 'zeta@tpay.me', '1');
+INSERT INTO `directoffers`.`connections` (`id`, `integration_protocol`, `integration_type`, `name`, `privatekey`, `public_key`, `status`, `status_date`, `status_reason`, `url`, `zeta_password`, `zeta_user`) VALUES ('1', 'HTTP', 'BROKER', 'TPAY', '59wW4vviKrhSTEeumLDx', 'gGU58u2njocHrYMbJcKA', 'ACTIVE', NOW(), 'dev', 'http://staging.tpayadmin.tpay.me', 'StagingP@ssw0rd1234', 'zeta@tpay.me');
+INSERT INTO `directoffers`.`connections` (`id`, `integration_protocol`, `integration_type`, `name`, `privatekey`, `public_key`, `status`, `status_date`, `status_reason`, `url`, `zeta_password`, `zeta_user`) VALUES ('2', 'SMPP', 'CARRIER', 'TESTE', '59wW4vviKrhSTEeumLDx', 'gGU58u2njocHrYMbJcKA', 'ACTIVE', NOW(), 'dev', 'http://staging.tpayadmin.tpay.me', 'StagingP@ssw0rd1234', 'zeta@tpay.me');
 
 --Countries Table
 INSERT INTO `directoffers`.`countries` (`id`, `iso`, `local_name`, `name`, `iso3`, `iso_code`, `phone_code`) VALUES (1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93);
@@ -253,9 +253,17 @@ INSERT INTO `directoffers`.`carriers` (`id`, `allow_decimals_info`, `carrier_req
 
 --Price Plans Table
 --- NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR)
-INSERT INTO `directoffers`.`pricepointplan` (`external_id`, `created_by`, `creation_date`, `frequency`, `minutes_before_retry`, `name`, `retry_count`, `retry_on_fail`, `value`, `carrierid`, `currency_id`) VALUES ('ZM2', 'pedro.sequeira', NOW(), '1', '120', '10EGP', '1', 1, '10', '1', '2');
-INSERT INTO `directoffers`.`pricepointplan` (`external_id`, `created_by`, `creation_date`, `frequency`, `minutes_before_retry`, `name`, `retry_count`, `retry_on_fail`, `value`, `carrierid`, `currency_id`) VALUES ('ZM2', 'pedro.sequeira', NOW(), '1', '120', '10EGP', '1', 1, '10', '2', '2');
-INSERT INTO `directoffers`.`pricepointplan` (`external_id`, `created_by`, `creation_date`, `frequency`, `minutes_before_retry`, `name`, `retry_count`, `retry_on_fail`, `value`, `carrierid`, `currency_id`) VALUES ('ZM2', 'pedro.sequeira', NOW(), '1', '120', '10EGP', '1', 1, '10', '3', '2');
+INSERT INTO `directoffers`.`pricepointplan` (`external_id`, `pay_type`, `created_by`, `creation_date`, `frequency`, `minutes_before_retry`, `name`, `retry_count`, `retry_on_fail`, `value`, `carrierid`, `currency_id`) VALUES ('ZM2', 'DIRECTBILLING', 'pedro.sequeira', NOW(), '1', '120', '2EGP', '1', 1, '2', '1', '2');
+INSERT INTO `directoffers`.`pricepointplan` (`external_id`, `pay_type`, `created_by`, `creation_date`, `frequency`, `minutes_before_retry`, `name`, `retry_count`, `retry_on_fail`, `value`, `carrierid`, `currency_id`) VALUES ('ZM2', 'DIRECTBILLING', 'pedro.sequeira', NOW(), '1', '120', '2EGP', '1', 1, '2', '2', '2');
+INSERT INTO `directoffers`.`pricepointplan` (`external_id`, `pay_type`, `created_by`, `creation_date`, `frequency`, `minutes_before_retry`, `name`, `retry_count`, `retry_on_fail`, `value`, `carrierid`, `currency_id`) VALUES ('ZM2', 'DIRECTBILLING', 'pedro.sequeira', NOW(), '1', '120', '2EGP', '1', 1, '2', '3', '2');
+
+--Campaigns
+INSERT INTO `directoffers`.`campaigns` (`category`, `creation_date`, `created_by`, `external_id`, `name`, `connection_id`,  `status` ) VALUES ('Exoteric', NOW(), 'pedro.sequeira', 'MyAstro', 'MyAstro', '1', 'Staging');
 
 
+--CampaignsOffers
+INSERT INTO `directoffers`.`campaignoffers` (`id`, `created_by`, `creation_date`, `external_id`, `jump_url`, `name`, `campaign_id`, `price_point_plan_id`) VALUES ('1', 'pedro.sequeira', NOW(), '60522', 'http://zmobs.com/headerenrich.php', 'MyAstro', 1, 1);
+INSERT INTO `directoffers`.`campaignoffers` (`id`, `created_by`, `creation_date`, `external_id`, `jump_url`, `name`, `campaign_id`, `price_point_plan_id`) VALUES ('2', 'pedro.sequeira', NOW(), '60522', 'http://zmobs.com/headerenrich.php', 'MyAstro', 1, 2);
+INSERT INTO `directoffers`.`campaignoffers` (`id`, `created_by`, `creation_date`, `external_id`, `jump_url`, `name`, `campaign_id`, `price_point_plan_id`) VALUES ('3', 'pedro.sequeira', NOW(), '60522', 'http://zmobs.com/headerenrich.php', 'MyAstro', 1, 3);
+INSERT INTO `directoffers`.`campaignoffers` (`id`, `created_by`, `creation_date`, `external_id`, `jump_url`, `name`, `campaign_id`, `price_point_plan_id`) VALUES ('4', 'pedro.sequeira', NOW(), '60522', 'https://scontent.flis5-1.fna.fbcdn.net/v/t31.0-8/19577319_1630953993623944_2701269389556194060_o.jpg?oh=8d4de30998986a3291114c0afcc7f33a&oe=5A1DE7C4', 'Mel', 1, 3);
 
