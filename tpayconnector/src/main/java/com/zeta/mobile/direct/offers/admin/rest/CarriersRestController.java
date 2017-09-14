@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
-import com.zeta.mobile.direct.offers.entities.CarriersEntity;
-import com.zeta.mobile.direct.offers.repository.CarriersJpaRepository;
+import com.zeta.mobile.direct.offers.entities.Carrier;
+import com.zeta.mobile.direct.offers.repository.CarriersRepository;
 
 @RestController
 @RequestMapping("carriers")
 public class CarriersRestController {
 
 	@Autowired
-	private CarriersJpaRepository carriersRepo;
+	private CarriersRepository carriersRepo;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
-	public ArrayList<CarriersEntity> getEmployeeInJSON() {
-		Iterable<CarriersEntity> carriersIterable = carriersRepo.findAll();
-		ArrayList<CarriersEntity> list = Lists.newArrayList(carriersIterable);
+	public ArrayList<Carrier> getEmployeeInJSON() {
+		Iterable<Carrier> carriersIterable = carriersRepo.findAll();
+		ArrayList<Carrier> list = Lists.newArrayList(carriersIterable);
 		return list;
 	}
 }

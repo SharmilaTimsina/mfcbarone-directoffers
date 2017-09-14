@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
-import com.zeta.mobile.direct.offers.entities.PricepointplanEntity;
-import com.zeta.mobile.direct.offers.repository.PricepointplanJpaRepository;
+import com.zeta.mobile.direct.offers.entities.PricePointPlan;
+import com.zeta.mobile.direct.offers.repository.PricePointPlanRepository;
 
 @RestController
 @RequestMapping("priceplans")
 public class PricePlansRestController {
 	@Autowired
-	private PricepointplanJpaRepository pricepointplanRepo;
+	private PricePointPlanRepository pricepointplanRepo;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
-	public ArrayList<PricepointplanEntity> getEmployeeInJSON() {
-		Iterable<PricepointplanEntity> carriersIterable = pricepointplanRepo.findAll();
-		ArrayList<PricepointplanEntity> list = Lists.newArrayList(carriersIterable);
+	public ArrayList<PricePointPlan> getEmployeeInJSON() {
+		Iterable<PricePointPlan> carriersIterable = pricepointplanRepo.findAll();
+		ArrayList<PricePointPlan> list = Lists.newArrayList(carriersIterable);
 		return list;
 	}
 }

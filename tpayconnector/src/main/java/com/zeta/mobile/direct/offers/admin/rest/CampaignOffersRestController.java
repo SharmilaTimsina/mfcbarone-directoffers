@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
-import com.zeta.mobile.direct.offers.entities.CampaignoffersEntity;
-import com.zeta.mobile.direct.offers.repository.CampaignoffersJpaRepository;
+import com.zeta.mobile.direct.offers.entities.CampaignOffer;
+import com.zeta.mobile.direct.offers.repository.CampaignOffersRepository;
 
 @RestController
 @RequestMapping("campaignoffers")
 public class CampaignOffersRestController {
 	@Autowired
-	private CampaignoffersJpaRepository campaignOffersRepo;
+	private CampaignOffersRepository campaignOffersRepo;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
-	public ArrayList<CampaignoffersEntity> getEmployeeInJSON() {
-		Iterable<CampaignoffersEntity> campaignsIterable = campaignOffersRepo.findAll();
-		ArrayList<CampaignoffersEntity> list = Lists.newArrayList(campaignsIterable);
+	public ArrayList<CampaignOffer> getEmployeeInJSON() {
+		Iterable<CampaignOffer> campaignsIterable = campaignOffersRepo.findAll();
+		ArrayList<CampaignOffer> list = Lists.newArrayList(campaignsIterable);
 		return list;
 	}
 }
