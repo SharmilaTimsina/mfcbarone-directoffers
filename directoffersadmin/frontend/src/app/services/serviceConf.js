@@ -7,7 +7,7 @@
     function serviceConfiguration() {
         return {
             getServerRestUrl: function () {
-                return "http://192.168.1.127:8080/directoffers/rest/"
+                return "http://localhost:8080/directoffers/rest/"
             }
         }
     }
