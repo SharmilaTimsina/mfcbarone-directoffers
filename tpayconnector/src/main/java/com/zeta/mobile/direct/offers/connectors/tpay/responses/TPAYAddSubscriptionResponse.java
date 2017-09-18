@@ -5,22 +5,33 @@ import com.zeta.mobile.direct.offers.connectors.tpay.requests.TpayAddSubscriptio
 
 public class TPAYAddSubscriptionResponse extends Response {
 
-	private boolean isNewCustomer;
 	private TpayAddSubscriptionRequest request;
-
-	public boolean isNewCustomer() {
-		return isNewCustomer;
-	}
-
-	public void setNewCustomer(boolean isNewCustomer) {
-		this.isNewCustomer = isNewCustomer;
-	}
 
 	public TpayAddSubscriptionRequest getRequest() {
 		if (request == null) {
 			request = new TpayAddSubscriptionRequest();
 		}
 		return request;
+	}
+
+	private Long subscriptionId;
+
+	public Long getSubscriptionId() {
+		return subscriptionId;
+	}
+
+	public void setSubscriptionId(Long subscriptionId) {
+		this.subscriptionId = subscriptionId;
+	}
+
+	public void setRequest(TpayAddSubscriptionRequest request) {
+		this.request = request;
+	}
+
+	@Override
+	public String toString() {
+		return "TPAYAddSubscriptionResponse [request=" + request + ", subscriptionId=" + subscriptionId + ", status="
+				+ status + "]";
 	}
 
 }

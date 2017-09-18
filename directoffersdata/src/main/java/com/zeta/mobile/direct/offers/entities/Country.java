@@ -44,14 +44,14 @@ public class Country implements Serializable {
 	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
 	// ----------------------------------------------------------------------
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
 	// ----------------------------------------------------------------------
 	// ENTITY DATA FIELDS
 	// ----------------------------------------------------------------------
-	@Column(name = "localName")
+	@Column(name = "local_name")
 	private String localName;
 
 	@Column(name = "iso", nullable = false)
@@ -63,10 +63,10 @@ public class Country implements Serializable {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "isoCode")
+	@Column(name = "iso_code")
 	private int isoCode;
 
-	@Column(name = "phoneCode")
+	@Column(name = "phone_code")
 	private int phoneCode;
 
 	// `id`, `iso`, `name`, `englishName`, `iso3`, `isoCode`, `phonecode

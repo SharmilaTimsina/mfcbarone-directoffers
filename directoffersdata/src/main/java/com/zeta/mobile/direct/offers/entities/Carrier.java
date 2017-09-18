@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "carriers", catalog = "directoffers")
 // Define named queries here
 @NamedQueries({ @NamedQuery(name = "Carrier.countAll", query = "SELECT COUNT(x) FROM Carrier x"),
-		@NamedQuery(name = "Carrier.findByNetworkCode", query = "SELECT x FROM Carrier x where x.networkCode =:networkCode")
+		@NamedQuery(name = "Carrier.findByNetworkCode", query = "SELECT x FROM Carrier x where x.networkCode = :networkCode")
 
 })
 public class Carrier implements Serializable {
@@ -48,7 +48,7 @@ public class Carrier implements Serializable {
 	// ENTITY PRIMARY KEY ( EMBEDDED IN AN EXTERNAL CLASS )
 	// ----------------------------------------------------------------------
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 

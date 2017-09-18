@@ -19,7 +19,7 @@ public class CustomersService {
 
 	public Customer findOrCreate(String msisdn, Carrier carrier, String createdBy, String language) {
 
-		Customer customer = customersRepo.findByMsisdnAndCarrierId(msisdn, carrier.getId());
+		Customer customer = customersRepo.findByMsisdnAndCarrier(msisdn, carrier);
 
 		if (customer == null) {
 			logger.info(carrier.getNetworkCode() + "|" + msisdn + " : customer not found -> creating new");

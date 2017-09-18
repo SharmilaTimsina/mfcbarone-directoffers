@@ -24,14 +24,14 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "customers", catalog = "directoffers")
 
 @NamedQueries({ @NamedQuery(name = "Customer.countAll", query = "SELECT COUNT(x) FROM Customer x"),
-		@NamedQuery(name = "Customer.findByMsisdnAndCarrierId", query = "SELECT x FROM Customer x where x.msisdn=:custMsisdn and x.carrier = :custCarrierId")
+		@NamedQuery(name = "Customer.findByMsisdnAndCarrier", query = "SELECT x FROM Customer x where x.msisdn=:custMsisdn and x.carrier = :custCarrier")
 
 })
 public class Customer {
 
 	@Id
 	@Column(name = "id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "name")
@@ -61,7 +61,7 @@ public class Customer {
 	@Column(name = "createdBy", nullable = false)
 	private String createdby;
 
-	@Column(name = "externalId", nullable = false)
+	@Column(name = "externalId")
 	private String externalId;
 
 	@Column(name = "language", nullable = false)

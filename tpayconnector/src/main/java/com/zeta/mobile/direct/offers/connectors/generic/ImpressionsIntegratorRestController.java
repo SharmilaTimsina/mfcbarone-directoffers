@@ -42,6 +42,18 @@ public class ImpressionsIntegratorRestController {
 		AddImpressionResponse response = new AddImpressionResponse();
 
 		// TODO Add more validations aka language
+		if (impressionRequest.getSourceip() == null) {
+			logger.error("invalid impression request | impression IP is null");
+			response.setStatus(ResponseStatus.IP_IS_NULL);
+			return response;
+		}
+
+		if (impressionRequest.getBrowserlanguage() == null) {
+			logger.error("invalid impression request | broswer language  is null");
+			response.setStatus(ResponseStatus.BROWSER_LANGUAGE_IS_NULL);
+			return response;
+		}
+
 		if (impressionRequest.getCampaignName() == null) {
 			logger.error(CONNECTOR + " | " + impressionRequest.getSourceip() + " | "
 					+ impressionRequest.getCampaignName() + " : campaign name is null");
@@ -68,7 +80,7 @@ public class ImpressionsIntegratorRestController {
 		impression.setScreensize(impressionRequest.getScreensize());
 		impression.setSourceip(impressionRequest.getSourceip());
 		impression.setTimezone(impressionRequest.getTimezone());
-
+		impression.setBrowserlanguage(impressionRequest.getBrowserlanguage());
 		impression.setCampaign(campaign);
 
 		impression = impressionsRepository.save(impression);

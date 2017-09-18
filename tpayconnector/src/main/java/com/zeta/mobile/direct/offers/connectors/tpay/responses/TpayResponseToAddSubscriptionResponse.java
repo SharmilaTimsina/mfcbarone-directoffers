@@ -3,12 +3,20 @@ package com.zeta.mobile.direct.offers.connectors.tpay.responses;
 import com.zeta.mobile.direct.offers.admin.generic.Response;
 import com.zeta.mobile.direct.offers.entities.helpers.UserSubscriptionStatus;
 
-public class VerifySubscriptionResponse extends Response {
+public class TpayResponseToAddSubscriptionResponse extends Response {
 
 	private UserSubscriptionStatus subscriptionStatus;
 	private String accessToken;
 	private String subscriptionContractId;
 	private Long subscriptionId;
+
+	public Long getSubscriptionId() {
+		return subscriptionId;
+	}
+
+	public void setSubscriptionId(Long subscriptionId) {
+		this.subscriptionId = subscriptionId;
+	}
 
 	public UserSubscriptionStatus getSubscriptionStatus() {
 		return subscriptionStatus;
@@ -34,12 +42,11 @@ public class VerifySubscriptionResponse extends Response {
 		this.subscriptionContractId = subscriptionContractId;
 	}
 
-	public Long getSubscriptionId() {
-		return subscriptionId;
-	}
-
-	public void setSubscriptionId(Long subscriptionId) {
-		this.subscriptionId = subscriptionId;
+	@Override
+	public String toString() {
+		return "TpayResponseToAddSubscriptionResponse [subscriptionStatus=" + subscriptionStatus + ", accessToken="
+				+ accessToken + ", subscriptionContractId=" + subscriptionContractId + ", subscriptionId="
+				+ subscriptionId + "]";
 	}
 
 }

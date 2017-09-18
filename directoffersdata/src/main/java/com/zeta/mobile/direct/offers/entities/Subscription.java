@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,14 +45,16 @@ import com.zeta.mobile.direct.offers.entities.helpers.SalesChannel;
 @Entity
 @Table(name = "subscriptions", catalog = "directoffers")
 // Define named queries here
-@NamedQueries({ @NamedQuery(name = "Subscription.countAll", query = "SELECT COUNT(x) FROM Subscription x") })
+@NamedQueries({ @NamedQuery(name = "Subscription.countAll", query = "SELECT COUNT(x) FROM Subscription x"),
+		@NamedQuery(name = "Subscription.findById", query = "SELECT x FROM Subscription x where x.id = :id"),
+		@NamedQuery(name = "Subscription.findByCustomerAndCampaignOffer", query = "SELECT x FROM Subscription x where customer = :customer and campaignOffer= :campaignOffer") })
 public class Subscription implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "external_id")
@@ -60,7 +64,7 @@ public class Subscription implements Serializable {
 	private SalesChannel salesChannel;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "next_renew_date", nullable = false)
+	@Column(name = "next_renew_date")
 	private Date nextrenewdate;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -71,7 +75,11 @@ public class Subscription implements Serializable {
 	private String createdby;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "start_date", nullable = false)
+	@Column(name = "request_date", nullable = false)
+	private Date requestDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "start_date")
 	private Date startDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -104,7 +112,8 @@ public class Subscription implements Serializable {
 	@JsonManagedReference
 	private CampaignOffer campaignOffer;
 
-	@OneToMany(mappedBy = "subscription", targetEntity = SubscriptionStatus.class)
+	@OneToMany(mappedBy = "subscription", targetEntity = SubscriptionStatus.class, cascade = CascadeType.ALL)
+	@OrderBy("statusDate DESC")
 	@JsonBackReference
 	private List<SubscriptionStatus> listOfSubscriptionsStatus;
 
@@ -245,6 +254,14 @@ public class Subscription implements Serializable {
 
 	public void setCampaignOffer(CampaignOffer campaignOffer) {
 		this.campaignOffer = campaignOffer;
+	}
+
+	public Date getRequestDate() {
+		return requestDate;
+	}
+
+	public void setRequestDate(Date requestDate) {
+		this.requestDate = requestDate;
 	}
 
 }

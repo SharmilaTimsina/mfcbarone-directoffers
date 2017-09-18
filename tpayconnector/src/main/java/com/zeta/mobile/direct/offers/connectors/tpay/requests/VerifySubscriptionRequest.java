@@ -1,88 +1,66 @@
 package com.zeta.mobile.direct.offers.connectors.tpay.requests;
 
-import java.util.Date;
-
 public class VerifySubscriptionRequest {
 
-	private Date created_at;
-	private String signature;
-	private String subscription_contract_id;
-	private String pin_code;
-	private String operation_status_code;
-	private String error_message;
-	private int operator_code;
-	private String msisdn;
+	private Long subscriptionId;
+	private String subscriptionContractId;
+	private String pinCode;
+	private String operationStatus;
+	private String errorMessage;
+	private String responseCode;
 
-	public Date getCreated_at() {
-		return created_at;
+	public Long getSubscriptionId() {
+		return subscriptionId;
 	}
 
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
+	public void setSubscriptionId(Long subscriptionId) {
+		this.subscriptionId = subscriptionId;
 	}
 
-	public String getSignature() {
-		return signature;
+	public String getSubscriptionContractId() {
+		return subscriptionContractId;
 	}
 
-	public void setSignature(String signature) {
-		this.signature = signature;
+	public void setSubscriptionContractId(String subscriptionContractId) {
+		this.subscriptionContractId = subscriptionContractId;
 	}
 
-	public String getSubscription_contract_id() {
-		return subscription_contract_id;
+	public String getPinCode() {
+		return pinCode;
 	}
 
-	public void setSubscription_contract_id(String subscription_contract_id) {
-		this.subscription_contract_id = subscription_contract_id;
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
 	}
 
-	public String getPin_code() {
-		return pin_code;
+	public String getOperationStatus() {
+		return operationStatus;
 	}
 
-	public void setPin_code(String pin_code) {
-		this.pin_code = pin_code;
+	public void setOperationStatus(String operationStatus) {
+		this.operationStatus = operationStatus;
 	}
 
-	public String getOperation_status_code() {
-		return operation_status_code;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
-	public void setOperation_status_code(String operation_status_code) {
-		this.operation_status_code = operation_status_code;
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
-	public String getError_message() {
-		return error_message;
+	public String getResponseCode() {
+		return responseCode;
 	}
 
-	public void setError_message(String error_message) {
-		this.error_message = error_message;
-	}
-
-	public int getOperator_code() {
-		return operator_code;
-	}
-
-	public void setOperator_code(int operator_code) {
-		this.operator_code = operator_code;
-	}
-
-	public String getMsisdn() {
-		return msisdn;
-	}
-
-	public void setMsisdn(String msisdn) {
-		this.msisdn = msisdn;
+	public void setResponseCode(String responseCode) {
+		this.responseCode = responseCode;
 	}
 
 	@Override
 	public String toString() {
-		return "VerifySubscriptionRequest [created_at=" + created_at + ", signature=" + signature
-				+ ", subscription_contract_id=" + subscription_contract_id + ", pin_code=" + pin_code
-				+ ", operation_status_code=" + operation_status_code + ", error_message=" + error_message
-				+ ", operator_code=" + operator_code + ", msisdn=" + msisdn + "]";
+		return "VerifySubscriptionRequest [subscriptionId=" + subscriptionId + ", subscriptionContractId="
+				+ subscriptionContractId + ", pinCode=" + pinCode + ", operationStatus=" + operationStatus
+				+ ", errorMessage=" + errorMessage + ", responseCode=" + responseCode + "]";
 	}
-
 }

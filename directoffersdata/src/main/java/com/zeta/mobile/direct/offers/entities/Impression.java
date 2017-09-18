@@ -49,7 +49,7 @@ public class Impression implements Serializable {
 	// ----------------------------------------------------------------------
 	@Id
 	@Column(name = "id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	// ----------------------------------------------------------------------
@@ -58,7 +58,7 @@ public class Impression implements Serializable {
 	@Column(name = "time_zone")
 	private String timezone;
 
-	@Column(name = "browser_language")
+	@Column(name = "browser_language", nullable = false)
 	private String browserlanguage;
 
 	@Column(name = "platform")

@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "campaign_offers", catalog = "directoffers")
 // Define named queries here
 @NamedQueries({ @NamedQuery(name = "CampaignOffer.countAll", query = "SELECT COUNT(x) FROM CampaignOffer x"),
-		@NamedQuery(name = "CampaignOffer.findByOperatorIdAndCampaignId", query = "SELECT x FROM CampaignOffer x where x.carrier= :opId and x.campaign= :campaignId") })
+		@NamedQuery(name = "CampaignOffer.findByOperatorAndCampaign", query = "SELECT x FROM CampaignOffer x where x.carrier= :carrier and x.campaign= :campaign") })
 public class CampaignOffer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,7 +51,7 @@ public class CampaignOffer implements Serializable {
 	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
 	// ----------------------------------------------------------------------
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
@@ -59,7 +59,7 @@ public class CampaignOffer implements Serializable {
 	// ENTITY DATA FIELDS
 	// ----------------------------------------------------------------------
 	@Column(name = "external_id", nullable = false)
-	private Integer externalid;
+	private String externalId;
 
 	@Column(name = "name", nullable = false)
 	private String name;
@@ -121,12 +121,12 @@ public class CampaignOffer implements Serializable {
 		return this.id;
 	}
 
-	public void setExternalid(Integer externalid) {
-		this.externalid = externalid;
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
 	}
 
-	public Integer getExternalid() {
-		return this.externalid;
+	public String getExternalId() {
+		return this.externalId;
 	}
 
 	public void setName(String name) {

@@ -47,7 +47,7 @@ public class Connection implements Serializable {
 	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
 	// ----------------------------------------------------------------------
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
@@ -57,44 +57,44 @@ public class Connection implements Serializable {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "privatekey")
+	@Column(name = "private_key")
 	private String privateKey;
 
-	@Column(name = "publicKey")
+	@Column(name = "public_key")
 	private String publickey;
 
-	@Column(name = "zetaUser")
+	@Column(name = "zeta_user")
 	private String zetaUser;
 
-	@Column(name = "zetaPassword")
+	@Column(name = "zeta_password")
 	private String zetaPassword;
 
 	@Column(name = "url")
 	private String url;
 
-	@Column(name = "supportPhoneNumber")
+	@Column(name = "support_phone_number")
 	private String supportphonenumber;
 
-	@Column(name = "supportEmail")
+	@Column(name = "support_email")
 	private String supportemail;
 
-	@Column(name = "supportSkype")
+	@Column(name = "support_skype")
 	private String supportskype;
 
-	@Column(name = "integrationType", nullable = false)
+	@Column(name = "integration_type", nullable = false)
 	private String integrationtype;
 
 	@Column(name = "status", nullable = false)
 	private String status;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "statusDate")
+	@Column(name = "status_date")
 	private Date statusDate;
 
-	@Column(name = "statusReason")
+	@Column(name = "status_reason")
 	private String statusReason;
 
-	@Column(name = "integrationProtocol")
+	@Column(name = "integration_protocol")
 	private String integrationProtocol;
 
 	// "currencyid" (column "currencyId") is not defined by itself because used as
