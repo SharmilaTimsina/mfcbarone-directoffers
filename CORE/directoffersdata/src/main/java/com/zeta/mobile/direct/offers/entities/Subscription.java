@@ -35,16 +35,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.zeta.mobile.direct.offers.entities.helpers.SalesChannel;
 
-/**
- * Persistent class for entity stored in table "subscriptions"
- *
- * @author Telosys Tools Generator
- *
- */
 
 @Entity
 @Table(name = "subscriptions", catalog = "directoffers")
-// Define named queries here
 @NamedQueries({ @NamedQuery(name = "Subscription.countAll", query = "SELECT COUNT(x) FROM Subscription x"),
 		@NamedQuery(name = "Subscription.findById", query = "SELECT x FROM Subscription x where x.id = :id"),
 		@NamedQuery(name = "Subscription.findByCustomerAndCampaignOffer", query = "SELECT x FROM Subscription x where customer = :customer and campaignOffer= :campaignOffer") })
@@ -101,7 +94,15 @@ public class Subscription implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "impression_id", referencedColumnName = "id")
 	public Impression impression;
-
+	
+	@OneToMany(mappedBy = "subscription", targetEntity = MoMessages.class)
+	@JsonBackReference
+	private List<MoMessages> listOfMoMessages;
+	
+	@OneToMany(mappedBy = "subscription", targetEntity = MtMessages.class)
+	@JsonBackReference
+	private List<MoMessages> listOfMtMessages;
+	
 	@ManyToOne
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	@JsonManagedReference
@@ -117,16 +118,10 @@ public class Subscription implements Serializable {
 	@JsonBackReference
 	private List<SubscriptionStatus> listOfSubscriptionsStatus;
 
-	// ----------------------------------------------------------------------
-	// CONSTRUCTOR(S)
-	// ----------------------------------------------------------------------
 	public Subscription() {
 		super();
 	}
 
-	// ----------------------------------------------------------------------
-	// GETTER & SETTER FOR THE KEY FIELD
-	// ----------------------------------------------------------------------
 	public void setId(Long id) {
 		this.id = id;
 	}

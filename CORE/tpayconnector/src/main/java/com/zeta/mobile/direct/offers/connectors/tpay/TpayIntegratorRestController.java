@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.log4j.Logger;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.zeta.mobile.direct.offers.admin.generic.ResponseStatus;
 import com.zeta.mobile.direct.offers.admin.services.subscription.CustomersService;
 import com.zeta.mobile.direct.offers.connectors.tpay.requests.TpayAddSubscriptionRequest;
@@ -24,10 +28,13 @@ import com.zeta.mobile.direct.offers.connectors.tpay.responses.TpayResponseToAdd
 import com.zeta.mobile.direct.offers.connectors.tpay.responses.VerifySubscriptionResponse;
 import com.zeta.mobile.direct.offers.entities.CampaignOffer;
 import com.zeta.mobile.direct.offers.entities.Carrier;
+import com.zeta.mobile.direct.offers.entities.Currency;
 import com.zeta.mobile.direct.offers.entities.Customer;
 import com.zeta.mobile.direct.offers.entities.Impression;
+import com.zeta.mobile.direct.offers.entities.PricePlan;
 import com.zeta.mobile.direct.offers.entities.Subscription;
 import com.zeta.mobile.direct.offers.entities.SubscriptionStatus;
+import com.zeta.mobile.direct.offers.entities.helpers.PricePointType;
 import com.zeta.mobile.direct.offers.entities.helpers.SalesChannel;
 import com.zeta.mobile.direct.offers.entities.helpers.UserSubscriptionStatus;
 import com.zeta.mobile.direct.offers.repository.CampaignOffersRepository;
@@ -172,11 +179,17 @@ public class TpayIntegratorRestController {
 			newSubscription.setIsSendVerification(true);
 		}
 
+		
 		newSubscription.setCreatedby(TPAYCONNECTOR);
 		newSubscription.setCreationdate(new Date());
 		newSubscription.setExternalid(null);
-		newSubscription.setIsAutoRenew(campaignOffer.getPricepointplan().getIsAutoRenew());
+		
+		
+		newSubscription.setIsAutoRenew(
+				campaignOffer.getPricePlan().getPricePointByType(PricePointType.SUBSCRIPTION).getIsAutoRenew()
+		);
 
+		
 		Date nowDate = new Date();
 		Date contractInitDate = DateUtils.addMinutes(nowDate, 1);
 		Date contractInitPayDate = DateUtils.addMinutes(nowDate, 2);
@@ -202,14 +215,18 @@ public class TpayIntegratorRestController {
 		response.getRequest().setSubscriptionPlanId(newSubscription.getCampaignOffer().getExternalId());
 
 		response.getRequest()
-				.setInitialPaymentproductId(newSubscription.getCampaignOffer().getPricepointplan().getExternalId());
+				.setInitialPaymentproductId(newSubscription.getCampaignOffer().getPricePlan().getExternalId());
 
 		response.getRequest().setProductCatalogName(newSubscription.getCampaignOffer().getCampaign().getExtenalid());
 		response.getRequest()
-				.setRecurringPaymentproductId(newSubscription.getCampaignOffer().getPricepointplan().getExternalId());
+				.setRecurringPaymentproductId(newSubscription.getCampaignOffer().getPricePlan().getExternalId());
 
-		/// TPAY REQUEST CONSTRUCTION
-		response.getRequest().setAutoRenewContract(campaignOffer.getPricepointplan().getIsAutoRenew());
+		
+		response.getRequest().setAutoRenewContract(
+				campaignOffer.getPricePlan().getPricePointByType(PricePointType.SUBSCRIPTION).getIsAutoRenew()
+				);
+		
+		
 		response.getRequest().setHeaderEnrichmentReferenceCode(newSubscription.getSalesChannelExternalRef());
 		response.getRequest().setSendVerificationSMS(newSubscription.getIsSendVerification());
 		response.getRequest().setLanguage(customer.getLanguage());

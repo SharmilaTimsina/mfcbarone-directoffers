@@ -31,33 +31,20 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-/**
- * Persistent class for entity stored in table "campaignoffers"
- *
- * @author Telosys Tools Generator
- *
- */
 
 @Entity
 @Table(name = "campaign_offers", catalog = "directoffers")
-// Define named queries here
 @NamedQueries({ @NamedQuery(name = "CampaignOffer.countAll", query = "SELECT COUNT(x) FROM CampaignOffer x"),
 		@NamedQuery(name = "CampaignOffer.findByOperatorAndCampaign", query = "SELECT x FROM CampaignOffer x where x.carrier= :carrier and x.campaign= :campaign") })
 public class CampaignOffer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	// ----------------------------------------------------------------------
-	// ENTITY PRIMARY KEY ( BASED ON A SINGLE FIELD )
-	// ----------------------------------------------------------------------
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	// ----------------------------------------------------------------------
-	// ENTITY DATA FIELDS
-	// ----------------------------------------------------------------------
 	@Column(name = "external_id", nullable = false)
 	private String externalId;
 
@@ -89,30 +76,25 @@ public class CampaignOffer implements Serializable {
 	private List<Subscription> listOfSubscriptions;
 
 	@ManyToOne
-	@JoinColumn(name = "price_point_plan_id", referencedColumnName = "id")
+	@JoinColumn(name = "price_plan_id", referencedColumnName = "id")
 	@JsonManagedReference
-	private PricePointPlan pricepointplan;
+	private PricePlan pricePlan;
 
 	@JoinColumn(name = "carrier_id", referencedColumnName = "id", insertable = false, updatable = false)
 	@ManyToOne
 	@JsonManagedReference
 	private Carrier carrier;
-
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "campaign_id", referencedColumnName = "id")
 	@JsonManagedReference
 	private Campaign campaign;
-
-	// ----------------------------------------------------------------------
-	// CONSTRUCTOR(S)
-	// ----------------------------------------------------------------------
+	
 	public CampaignOffer() {
 		super();
 	}
 
-	// ----------------------------------------------------------------------
-	// GETTER & SETTER FOR THE KEY FIELD
-	// ----------------------------------------------------------------------
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -185,14 +167,6 @@ public class CampaignOffer implements Serializable {
 		return this.editiondate;
 	}
 
-	public void setPricepointplan(PricePointPlan pricepointplan) {
-		this.pricepointplan = pricepointplan;
-	}
-
-	public PricePointPlan getPricepointplan() {
-		return this.pricepointplan;
-	}
-
 	public void setCampaigns(Campaign campaigns) {
 		this.campaign = campaigns;
 	}
@@ -224,5 +198,13 @@ public class CampaignOffer implements Serializable {
 	public void setCarrier(Carrier carrier) {
 		this.carrier = carrier;
 	}
+	
+	public PricePlan getPricePlan() {
+		return pricePlan;
+	}
 
+	public void setPricePlan(PricePlan pricePlan) {
+		this.pricePlan = pricePlan;
+	}
+	
 }

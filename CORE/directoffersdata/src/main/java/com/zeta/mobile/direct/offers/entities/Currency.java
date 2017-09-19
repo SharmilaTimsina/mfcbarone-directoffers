@@ -69,9 +69,9 @@ public class Currency implements Serializable {
 	@Column(name = "symbol_position")
 	private String symbolPosition;
 
-	@OneToMany(mappedBy = "currencies", targetEntity = PricePointPlan.class)
+	@OneToMany(mappedBy = "currencies", targetEntity = PricePlan.class)
 	@JsonBackReference
-	private List<PricePointPlan> listOfPricepointplan;
+	private List<PricePlan> listOfPricepointplan;
 
 	public Currency() {
 		super();
@@ -125,11 +125,11 @@ public class Currency implements Serializable {
 		this.decimalSeparator = decimalSeparator;
 	}
 
-	public List<PricePointPlan> getListOfPricepointplan() {
+	public List<PricePlan> getListOfPricepointplan() {
 		return listOfPricepointplan;
 	}
 
-	public void setListOfPricepointplan(List<PricePointPlan> listOfPricepointplan) {
+	public void setListOfPricepointplan(List<PricePlan> listOfPricepointplan) {
 		this.listOfPricepointplan = listOfPricepointplan;
 	}
 
