@@ -1,0 +1,369 @@
+body {
+	font-family: 'Roboto';
+	background: black;
+}
+
+.nopad { padding:0; }
+
+.lobster { font-family: 'Lobster', cursive; }
+
+/**NAVBAR CSS**/
+
+.tag-logo {
+	background:#f51c3f;
+	height: 25.5px;
+}
+
+.nav-logo {
+	background:url(../img/logo.jpg);
+	background-size: contain;
+	background-position: left;
+	background-repeat: no-repeat;
+}
+
+.nav-header {
+	background:url(../img/logo_bigger.png);
+	background-size: cover;
+	background-position: left;
+	background-repeat: no-repeat;
+}
+
+.nav-avatar {
+	float: right;
+    cursor: pointer;
+    width: 20px;
+    margin-top: 2px;
+}
+
+/**DIVIDER CSS**/
+
+.tag {
+	color: white;
+	background: #f51c3f;
+	padding: 4px 15px;
+	display: inline-block;
+	width: 100%;
+	font-size: 13px;
+	margin-top:-3px;
+}
+
+/**SLICK SLIDER CSS**/
+
+.slick-prev:before {
+	content:none;
+}
+
+.slick-prev {
+  transform: rotate(180deg);
+	background-image: url(../img/arrow3.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  top:21px;
+	left: 7px;
+	z-index:99;
+  width: 25px;
+  height: 25px;
+}
+
+.slick-next:before {
+	content:none;
+}
+
+.slick-next {
+	background-image: url(../img/arrow3.png);
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	content: none;
+	right: 7px;
+	z-index:99;
+  width:25px;
+  height: 25px;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+	background-image: url(../img/arrow3.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+  width: 100%;
+}
+
+.s-lover {
+	overflow:hidden;
+	width:100%;
+	height:auto;
+	margin: 10px 0;
+}
+
+/**NUMEROLOGIA SECTION**/
+
+.numerologia {
+  background-image: url(../img/numerologia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 326px;
+  margin-bottom: 4px;
+}
+
+.info-container {
+  padding-top: 30px;
+}
+
+.info-title {
+  color: #f51c3f;
+  font-family: 'Lobster', cursive; 
+  font-size: 45px;
+  text-align: center;
+}
+
+.info-subtitle {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1em;
+
+}
+
+.date-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/**CONTINUE BUTTON**/
+.continue {
+  display: block;
+  margin:0 auto;
+  background-color: yellow;
+  color: black;
+  width:130px;
+  padding:5px;
+  border:none;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0px 3px 0px 0px rgb(170, 184, 1);
+  font-size: 17px;
+}
+
+
+/**EM DESTAQUE CSS SECTION**/
+
+.highlight-tag {
+  display: block;
+  margin:0 auto;
+  color:white;
+  background-color: #f51c3f;
+  padding:8px;
+  width: 180px;
+  z-index:99;
+  text-align: center;
+  position: relative;
+}
+
+/**Buttons**/
+
+/**Find Out Button**/
+.find-out {
+  border-radius: 4px;
+  border-color: transparent;
+  background-color: #1c78f5;
+  box-shadow: 0px 3px 0px 0px rgb(23, 110, 207);
+  width: 92px;
+  height: 27px;
+  z-index: 63;
+  position: absolute;
+  color: white;
+  font-size: 13px;
+}
+
+.pfind-out {
+  border-radius: 4px;
+  border-color: rgba(254, 76, 104, 0.53);
+  background-color: rgb(235, 63, 133);
+  box-shadow: 0px 2px 0px 0px rgb(231, 43, 119);
+  height: 27px;
+  width:92px;
+  z-index: 63;
+  position: absolute;
+  color: white;
+  font-size: 13px;
+}
+
+/**More Button**/
+.more {
+  border-radius: 6px;
+  border-color: rgb(52, 52, 52);
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 2px 0px 0px rgb(64, 64, 64);
+  width: 65px;
+  height: 21px;
+  z-index: 63;
+  position: relative;
+  float: right;
+  color: white;
+  font-size: 12px;
+}
+
+/**Lupa Button**/
+.lupa {
+  margin-top: -3px;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.004);
+  left: 300px;
+  top: 805px;
+  width: 27px;
+  height: 27px;
+  z-index: 36;
+ float: right;
+}
+
+/**Button Top**/
+.top {
+  border-radius: 6px;
+  border-color: rgba(254, 76, 104, 0.53);
+  background-color: rgb(245, 28, 63);
+  box-shadow: 0px 2px 0px 0px rgb(254, 81, 109);
+  left: 146px;
+  top: 870px;
+  width: 100%;
+  height: 100%;
+  z-index: 21;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+/**Button back and Home**/
+.back-home {
+  border-radius: 6px;
+  border-color: rgb(52, 52, 52);
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 2px 0px 0px rgb(64, 64, 64);
+  left: 27px;
+  top: 870px;
+  width: 100%;
+  height: 100%;
+  z-index: 16;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+/**Test Button**/
+.test {
+  border-radius: 6px;
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.004);
+  left: 27px;
+  top: 870px;
+  width: 80px;
+  height: 28px;
+  z-index: 16;
+}
+
+/**Cancel Button**/
+.cancel {
+  border-radius: 6px;
+  background-color: rgb(254, 84, 84);
+  box-shadow: 0px 2px 0px 0px rgba(217, 51, 51, 0.004);
+  left: 43px;
+  top: 218px;
+  width: 286px;
+  height: 51px;
+  z-index: 696;
+}
+
+/**Subscription Button**/
+.subscribe {
+  border-radius: 6px;
+  background-color: rgb(144, 248, 59);
+  box-shadow: 0px 2px 0px 0px rgba(117, 217, 51, 0.004);
+  left: 43px;
+  top: 198px;
+  width: 286px;
+  height: 51px;
+  z-index: 794;
+}
+
+/**Banner Section**/
+
+.tbanner {
+	position: absolute;
+  z-index: 99;
+  width: 100%;
+  line-height: 1em;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/**Game Container**/
+
+.game-section {
+	background: white;
+}
+
+.game-container {
+	margin-top:3.5px;
+}
+
+.game-text {
+	background: #fff9e2;
+	text-align: center;
+  color: black;
+  padding: 10px;
+  line-height: 1em;
+  font-size: 8px; 
+}
+
+/**Fixed Footer**/
+
+.search-container {
+	margin-top:-7px;
+	background: #e8fdff;
+	padding: 5px 17px 5px;
+}
+
+.search-container input {
+	border:1px solid #ddd;
+	vertical-align: -webkit-baseline-middle;
+	padding-left: 5px;
+	font-size: 13px;
+	vertical-align: middle;
+}
+
+.footer {
+	background-image: url(../img/footer.jpg);
+	width:100%;
+	height: 60px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+.astro-footer {
+	width: 80px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  bottom: -23%;
+}
+
+.ftext {
+	color:white;
+	font-size: 12px;
+}
+
+.ftext:hover {
+	color: white;
+}
+

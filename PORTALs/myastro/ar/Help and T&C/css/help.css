@@ -1,0 +1,12 @@
+/**HELP CSS**/
+
+.pink { color: #f51c3f; }
+
+.help-text {
+  padding-bottom:20px;
+}
+
+.scroll-help {
+  max-height: 300px;
+  overflow-y: auto;
+}

@@ -1,0 +1,193 @@
+html {
+    width:100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+a {
+  color: #980129;
+  font-weight: 700;
+}
+
+/**LP BACKGROUND**/
+
+body {
+	background-image: url(../../lp3/img/fundo.jpg); 
+	background-size: cover;
+	background-position: center; 
+  min-height: 100vh;
+  /*height: 100vh;*/
+  position: relative;
+  margin: 0;
+}
+
+/**MYASTRO LOGO**/
+
+.lp-logo {
+	background-image: url(../../lp3/img/mobiplay_logo_navbar.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 110px;
+    height: 50px;
+    text-align: center;
+}
+
+/**LOADING SPINNER**/
+
+.loader_zeta{
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #0080f9; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/**THERMOMETER HEART**/
+
+.love-heart {
+	background-image: url(../../lp3/img/lp_heart.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: block;
+	margin: 0 auto;
+	width: 55vw;
+    height: 25vw;
+}
+
+/**ERROR MESSAGE**/
+
+.error_msg {
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/**NETWORK OPERATOR**/
+
+.network-input {
+  width: 100%;
+  margin-top:10px;
+}
+
+/**PIN CODE INPUT**/
+
+.pin_code {
+  margin-bottom: 10px;
+}
+
+/**HOROSCOPE**/
+
+.horoscope {
+  font-size: 5vw;
+  color: black;
+  text-shadow: 0px 1px 0px #ff9a00;
+}
+
+/**LP BUTTON**/
+
+.lp3_button {
+  border-radius: 10px;
+  background-color: rgb(255, 175, 53);
+  box-shadow: 0px 3px 0px 0px #cb724e;
+  border-color: #ffc163;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  top: 100%;
+  width: 40vw;
+  height: 15vw;
+  z-index: 24;
+  font-size: 9vw;
+  font-family: "Arial";
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0px 3px 0px rgba(152, 1, 41, 0.7);
+  margin-bottom: 10px;
+  z-index: 62;
+}
+
+/**LOGIN BUTTON**/
+
+.login-button {
+  color: black!important;
+  background-color: #ffe0b7;
+  border-color: #ffaf35;
+  box-shadow: 0px 3px 0px 0px rgb(210, 127, 0);
+  display: block;
+  margin: 0 auto;
+}
+
+.login-button:hover {
+  color: black!important;
+  background-color: #ffe0b7 !important;
+  border-color: #ffaf35 !important;
+}
+
+/**SERVICE CONDITIONS**/
+
+.service-conditions {
+	text-align: center;
+	color: black;
+	font-size: 3vw;
+  padding:15px 0;
+}
+
+/**TERMS LP PAGE**/
+
+.black {
+      color: black;
+      font-weight: 700;
+  }
+
+/**FIXED FOOTER CSS**/
+
+.fixed-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 5px;
+    height: 30px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/**CSS FO MOBILE**/
+
+@media screen and (max-width: 451px) {
+
+	.thermo-heart {
+		width: 70vw;
+		height: 46vw;
+	}
+
+	.lp_button {
+		width: 60vw;
+		height: 15vw;
+		font-size: 8vw;
+	}
+
+}
+
+.tpay.loading .spinner{
+	margin-left: -40px; /*FIX: spinner not in the middle without  -width/2 */
+}
+

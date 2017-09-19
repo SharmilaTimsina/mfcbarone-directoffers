@@ -1,0 +1,10 @@
+/**TERMS AND CONDITIONS CSS**/
+
+.scroll-terms {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.pink {
+  color: #f51c3f;
+}

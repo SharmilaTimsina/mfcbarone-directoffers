@@ -1,0 +1,115 @@
+body,h1 {
+	font-family: "Raleway", sans-serif
+}
+body, html {
+	background-color: #121a62;
+	max-height: 100%;height: 100%;
+    overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+button{
+	margin:5px;
+}
+
+.error_msg{
+	border: none;
+	color: #F65656;
+	text-decoration: underline;
+	text-decoration-color: #F65656;;
+}
+
+.spinner{
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.main_content{
+	display: none;
+}
+.universe {
+	background-image: url('http://localhost/lp/images/forestbridge.jpg');
+	min-height: 100%;
+	max-height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+
+.small-container{
+	line-height: 15.5px;
+	font-size: 9px;
+}
+
+.container{
+	padding:5px;
+}
+
+.h-centered{
+	display:block;
+	margin: 0 auto;
+}
+
+.white{
+	color: #cccccc;
+}
+.txt-center{
+	text-align:center;
+}
+
+img.logo{
+	min-width: 150px;
+	max-width: 167px;
+	min-height:50px;
+	max-height:80px;
+	width: 100%;
+	background: transparent;
+	border: none;
+}
+
+.content_lp{
+	background-color:rgba(255,255,255,0.8);
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+.form_mob_s_header_enrich{
+	display:none;
+	text-align: center;
+}
+.form_pin_code_cancel{
+	display:none;
+	text-align: center;
+}
+.form_pin_code_add{
+	display:none;
+	text-align: center;
+}
+.enriched_subs_button{
+	display:none;
+	text-align: center;
+}
+
+.operator{
+	padding:3px;
+}
+.mobile_numbber{
+	padding:3px;
+}
+.fixed-bottom{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding:5px;
+	height: 30px;
+	background-color: rgba(0,0,0,0.5);
+}

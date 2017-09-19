@@ -1,0 +1,64 @@
+/**HOROSCOPE CSS SECTION**/
+
+.horoscope-tag {/**YOUR DAILY HOROSCOPE**/
+  display: block;
+  margin:0 auto;
+  color:white;
+  background-color: #f51c3f;
+  padding:8px;
+  width: 100%;
+  z-index:99;
+  text-align: center;
+  position: relative;
+  transform: translateY(50%);
+  box-shadow: 1px 1px 9px 0px #777;
+  max-width: 70vw;
+  font-size: 6vw
+}
+
+.horoscope-background {/**BACKGROUND COLOR**/
+  padding-top: 30px;
+  background-color: #e8fdff;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  font-size: 11px;
+  padding-bottom: 10px;
+}
+
+.horoscope-background img {/**HOROSCOPE SIGNS**/
+  cursor: pointer;
+}
+
+.horoscope-background p {/**HOROSCOPE SIGNS TEXT**/
+  background-color: #abf8ff;
+  border-radius: 5px;
+  margin-top:3px;
+}
+
+.more-signs { /**BUTTON MORE SIGNS**/
+  display: block;
+  margin:0 auto;
+  background-color: yellow;
+  color: black;
+  width:130px;
+  padding:5px;
+  border:none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+  box-shadow: 0px 3px 0px 0px rgb(170, 184, 1);
+}
+
+@media screen and (max-width: 280px) {
+
+  /**signs bootstrap class for smaller screens**/
+
+  .col-xs-3 {
+    width: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+}

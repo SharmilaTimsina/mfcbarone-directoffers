@@ -1,0 +1,74 @@
+<!--NUMEROLOGIA GAME EXAMPLE-->
+<!--EACH GAME WILL HAVE A CUSTOM BACKGROUND IMAGE-->
+
+<!--THE SELECT INPUTS ARE FROM BOOTSTRAP-->
+
+<head>
+	<title>Content Info</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="../Numerologia/css/slick.css">
+	<link rel="stylesheet" type="text/css" href="../Numerologia/css/slick-theme.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="../Numerologia/css/content_info.css">
+</head>
+
+
+	<!--NUMEROLOGIA-->
+	<div id="numerologiaContainer" class="numerologia">
+		<div id="numerologiaTitleContainer" class="info-container">
+			<div class="info-title">Numerology</div>
+			<div class="info-subtitle">What is your birthday?</div>
+		</div>
+		<div id="selectContainer" class="date-container">
+			<div class="col-xs-3">
+				<p>Day</p>
+				<select id="daySelect" class="selectpicker"><!--dynamic selectbox here-->
+				  <option>1</option>
+				  <option>15</option>
+				  <option>30</option>
+				</select>
+
+			</div>
+			<div class="col-xs-3">
+				<p>Month</p>
+				<select id="monthSelect" class="selectpicker"><!--dynamic selectbox here-->
+				  <option>1</option>
+				  <option>7</option>
+				  <option>12</option>
+				</select>
+			</div>
+			<div class="col-xs-6">
+				<p>Year</p>
+				<select id="yearSelect" class="selectpicker"><!--dynamic selectbox here-->
+				  <option>1980</option>
+				  <option>1990</option>
+				  <option>2000</option>
+				</select>
+			</div>
+		</div>
+		<div id="numerologiaButtonContainer" class="col-xs-12" style="margin-top: 30px;">
+			<button id="numerologiaButton" class="continue">Continue</button><!--THE BUTTON REDIRECTS TO THE PAGE RESULT-->
+		</div>
+	</div>
+
+	<!--JAVASCRIPT LINKS-->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="../numerologia/js/slick.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		  $('.selectpicker').selectpicker({
+			  
+			});
+		});
+	</script>

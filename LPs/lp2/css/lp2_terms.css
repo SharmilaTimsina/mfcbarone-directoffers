@@ -1,0 +1,14 @@
+html {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+body {
+	height: auto;
+    background-color: #d30b48 !important;
+    background-image: none;
+    background-size: cover;
+    position: relative;
+    margin: 0;
+    background-position: center;
+}
