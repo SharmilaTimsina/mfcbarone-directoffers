@@ -1,0 +1,25 @@
+/**ACCOUNT PAGE WHEN USER ALREADY SUBSCRIBED**/
+
+.account-not-background {/**ACCOUNT BACKGROUND COLOR**/
+  background-color: white;
+  width: 100%;
+  height:100%;
+  padding-bottom: 20px;
+}
+
+.p-not-credits2 {/**PADDING AFTER TEXT**/
+  padding-bottom:50%;
+  font-size: 6vw;
+}
+
+.subscribe-not2 {
+  color: black;
+  background: #90f83b;
+  box-shadow: 0px 2px 0px 0px #75d933;
+  border-color: rgba(114, 255, 149, 0.53);
+  border-radius: 6px;
+  display: block;
+  margin: 10px auto;
+  font-size: 6vw;
+  width: 60vw;
+}

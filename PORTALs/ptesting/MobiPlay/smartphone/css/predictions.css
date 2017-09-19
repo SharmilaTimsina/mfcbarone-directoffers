@@ -1,0 +1,20 @@
+/**PREDICTIONS SECTION**/
+
+.game-section {
+  background: white;
+}
+
+.game-container {
+  margin-top:3.5px;
+}
+
+.game-text {
+  background: #fff9e2;
+  text-align: center;
+  color: black;
+  padding: 10px;
+  line-height: 1em;
+  font-size: 3.5vw;
+  box-shadow: 0px 2px 9px 0px #777;
+}
+
