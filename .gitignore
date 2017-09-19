@@ -29,3 +29,5 @@ CORE/directoffersadmin/.settings/org.eclipse.wst.jsdt.ui.superType.container
 CORE/directoffersadmin/.settings/org.eclipse.wst.jsdt.ui.superType.name
 CORE/directoffersdata/.settings/org.eclipse.wst.common.project.facet.core.xml
 CORE/tpayconnector/.settings/org.eclipse.wst.common.project.facet.core.xml
+
+/CORE/directoffersadmin/src/main/webapp/*
