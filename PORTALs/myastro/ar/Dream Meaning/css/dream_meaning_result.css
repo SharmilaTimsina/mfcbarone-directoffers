@@ -1,0 +1,30 @@
+/**LOVE SYMPATHIES RESULT CSS**/
+
+.dream-result {
+  background-image: url(../img/main_image_dream_meaning.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.dream-result-title {
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 14vw;
+  text-align: center;
+  line-height: 1em;
+  padding: 20px 0;
+
+}
+
+.dream-text-result {
+  height: 140px;
+  max-height: 426px;
+  overflow: auto;
+  text-align: center;
+  color:white;
+}
+

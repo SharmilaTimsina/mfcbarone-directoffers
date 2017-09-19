@@ -1,0 +1,42 @@
+<!--THIS IS THE SLIDER PRESENT IN ALMOST EVERY PAGE. THE SLIDER WILL BE THE CONTAINER OF SEVERAL GIFF BANNERS. WHEN CLICKING THE BANNER, THE USER WILL BE REDIRECTED TO A SUBSCRIPTION PAGE OF THAT SERVICE-->
+
+<!--THIS SLIDER HAS ARROWS AND ALSO THE SWIPE FEATURE-->
+
+<!--THIS SLIDER IS A PLUGIN,SO LINKS ARE NEEDED. ALSO, THE SLICK SLIDER NEEDS IT'S FUNCTION TO ACTIVATE THE PLUGIN -->
+<head>
+	<title>Smartphone</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../slider/css/slick.css"><!--SLICK SLIDER CSS-->
+	<link rel="stylesheet" type="text/css" href="../slider/css/slick-theme.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../slider/css/smartphone.css">
+</head>
+
+
+
+<!--MYASTRO SLIDER-->
+	<div id="sliderRow" class="row">
+		<div id="offerSlider">
+			<div>
+				<img id="sliderBanner" src="{{1_slider_banner_img_1}}" class="s-lover" alt="img"><!--GIF BANNER-->
+			</div>
+		</div>
+	</div><!--END SLIDER ROW-->
+
+
+<!--JAVASCRIPT CODE TO ACTIVATE SLICK SLIDER-->
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../slider/js/slick.min.js"></script><!--SLICK SLIDER JS-->
+
+	<script>
+		$(document).ready(function(){
+		  $('#offerSlider').slick({
+		  });
+		});
+	</script>

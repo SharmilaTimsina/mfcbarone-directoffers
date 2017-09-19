@@ -1,0 +1,63 @@
+/**LOVE POEM CSS**/
+
+.poem-background {/**POEM BACKGROUND**/
+  background-image: url(../img/main_image_poems.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-bottom:20px;
+}
+
+.poem-title {/**POEM TITLE**/
+  color: black;
+  font-family: 'Lobster', cursive;
+  font-size: 15vw;
+  text-align: center;
+  line-height: 1em;
+  padding-top: 20px;
+}
+
+.poem-list {/**POEM LIST TEXT**/
+  height: auto;
+  max-height: 426px;
+  overflow: auto;
+  margin-top:30px;
+  font-size: 5.5vw;
+}
+
+.poem-list > ul li {/**POEM PADDING LIST TEXT**/
+  padding:10px 0;
+  color: black;
+}
+
+.poem-list a {/**POEM LIST COLOR**/
+  color: black;
+}
+
+.poem-list a:hover {/**POEM LIST HOVER CSS**/
+  text-decoration-color: black;
+  color: black;
+}
+
+.poem-container {/**NEXT AND PREV BUTTON CONTAINER**/
+  padding-bottom:15px;
+  padding-top: 15px;
+}
+
+.continue-poem {/**POEM CONTINUE BUTTON**/
+  display: block;
+  background-color: yellow;
+  color: black;
+  width: 25vw;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0px 3px 0px 0px rgb(170, 184, 1);
+  font-size: 14px;
+}
+
+
+

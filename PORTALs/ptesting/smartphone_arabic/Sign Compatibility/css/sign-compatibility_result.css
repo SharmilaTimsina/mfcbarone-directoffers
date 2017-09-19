@@ -1,0 +1,61 @@
+/**SIGN COMPATIBILITY RESULT CSS**/
+
+.sign-compatibility-result {/**SIGN COMP. BACKGROUND IMAGE**/
+  background-image: url(../img/main_image_sign_compatibility.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  padding-bottom:20px;
+}
+
+.comp-title-result {/**SIGN COMP. RESULT TITLE**/
+	color: white;
+    font-family: 'Lobster', cursive;
+    font-size: 15vw;
+    text-align: center;
+    line-height: 1em;
+    padding-bottom:20px;
+}
+
+.com-sign-name {/**SIGNS NAME CSS**/
+	color:white;
+	font-weight: 700;
+    border-radius: 5px;
+    margin-top: 3px;
+    text-align: center;
+}
+
+.question {/**THE ? BETWEEN SIGNS**/
+	text-align: center;
+    font-size: 50px;
+    color: white
+}
+
+.comp-result-text {/**SIGN COMP. RESULT TEXT**/
+	height: 260px;
+    max-height: 426px;
+    overflow: auto;
+    text-align: center;
+    color: white;
+    margin-bottom:20px;
+}
+
+@media screen and (max-width: 250px ) {
+
+	/**css for smaller screens**/
+
+	.sign-resp {
+		width:100%;
+	}	
+
+	.question {
+		font-size: 30vw;
+	}
+
+	.comp-result-text {
+		font-size: 6vw
+	}
+}

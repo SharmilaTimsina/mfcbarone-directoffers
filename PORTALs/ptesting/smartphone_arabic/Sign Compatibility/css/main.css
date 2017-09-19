@@ -1,0 +1,346 @@
+body {
+  font-family: 'Roboto';
+  overflow-x: hidden;
+}
+
+.nopad { padding:0; }
+
+/*****************************/
+
+/**NAVBAR CSS**/
+
+.tag-logo {
+  background:#f51c3f;
+  height: 45px;
+}
+
+.nav-logo {
+  background:url(../img/logo.jpg);
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 45px;
+}
+
+.nav-header {
+  background:url(../img/logo_bigger.png);
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.nav-avatar {
+  float: right;
+  cursor: pointer;
+  width: 25px;
+  margin-top: 12px;
+}
+
+/**SEPARATOR TAG CSS**/
+
+.tag {
+  color: white;
+  background: #f51c3f;
+  padding: 4px 15px;
+  display: table;
+  width: 100%;
+  font-size: 5.5vw;
+  margin-top:-2px;
+  height: 45px;
+}
+
+.tag p {
+    vertical-align: text-top;
+    margin: 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/**BUTTONS**/
+
+/**More Button**/
+.more {
+  border-radius: 6px;
+  border-color: rgb(52, 52, 52);
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 2px 0px 0px rgb(64, 64, 64);
+  width: 35vw;
+  z-index: 63;
+  position: relative;
+  float: right;
+  color: white;
+  font-size: 6vw;
+  padding: 5px 0px;
+  margin-top: 2px;
+}
+
+/**Lupa Button**/
+.lupa {
+  margin-top: -3px;
+  border-radius: 100px;
+  border-color: transparent;
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.004);
+  left: 300px;
+  top: 805px;
+  width: 10vw;
+  height: 10vw;
+  z-index: 36;
+  float: right;
+  background-image: url(../img/mag_glass.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/**Button Top**/
+.top {
+  border-radius: 6px;
+  border-color: rgba(254, 76, 104, 0.53);
+  background-color: rgb(245, 28, 63);
+  box-shadow: 0px 2px 0px 0px rgb(254, 81, 109);
+  left: 146px;
+  top: 870px;
+  width: 100%;
+  height: 100%;
+  z-index: 21;
+  color: white;
+  font-size: 4vw;
+  text-align: center;
+  padding: 5px 0px;
+}
+
+/**Button Back and Home**/
+.back-home {
+  border-radius: 6px;
+  border-color: rgb(52, 52, 52);
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 2px 0px 0px rgb(64, 64, 64);
+  left: 27px;
+  top: 870px;
+  width: 100%;
+  height: 100%;
+  z-index: 16;
+  color: white;
+  font-size: 4vw;
+  text-align: center;
+  padding: 5px 0px;
+}
+
+/**FOOTER CSS**/
+
+/**search css**/
+
+.search-container {
+  margin-top: -7px;
+  background: #e8fdff;
+  padding: 5% 17px;
+}
+
+.search-container input {
+  border:1px solid #ddd;
+  vertical-align: -webkit-baseline-middle;
+  padding-left: 5px;
+  font-size: 5vw;
+  vertical-align: middle;
+  width:80%;
+}
+
+/**footer css**/
+
+.footer {
+  background-image: url(../img/footer.jpg);
+  width:100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+  padding-top:10px;
+}
+
+/**footer logo css**/
+
+.astro-footer {
+  width: 80px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  bottom: -23%;
+  padding-top: 10px;
+}
+
+/**footer text css**/
+
+.ftext {
+  color:white;
+  font-size: 5vw;
+  margin-top:10px;
+}
+
+.ftext:hover {
+  color: white;
+}
+
+@media screen and (max-width: 319px) {
+
+  .nopad { padding:0; }
+
+  /**NAVBAR CSS FEATURE**/
+
+  .tag-logo {
+    background:#f51c3f;
+    height: 40px;
+  }
+
+  .nav-logo {
+    background:url(../img/logo.jpg);
+    background-size: auto;
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  .nav-header {
+    background:url(../img/logo_bigger.png);
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+
+  .nav-avatar {
+    float: right;
+    cursor: pointer;
+    width: 25px;
+    margin-top: 8px;
+  }
+
+  /**DIVIDER CSS**/
+
+  .tag {
+    color: white;
+    background: #f51c3f;
+    padding: 4px 15px;
+    display: table;
+    width: 100%;
+    font-size: 7vw;
+    margin-top:-2px;
+    height: 32px;
+  }
+
+  .tag p {
+      vertical-align: text-top;
+      margin: 0;
+      display: table-cell;
+      vertical-align: middle;
+  }
+
+  /**Buttons**/
+
+  /**More Button**/
+
+/*
+  .more {
+    border-radius: 6px;
+    border-color: rgb(52, 52, 52);
+    background-color: rgb(30, 30, 30);
+    box-shadow: 0px 2px 0px 0px rgb(64, 64, 64);
+    width: 65px;
+    z-index: 63;
+    position: relative;
+    float: right;
+    color: white;
+    font-size: 12px;
+  }
+  */
+
+
+  /**Lupa Button**/
+/*
+  .lupa {
+    border-radius: 100px;
+    border-color: transparent;
+    background-color: rgb(30, 30, 30);
+    box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.004);
+    left: 300px;
+    top: 805px;
+    width: 20px;
+    height: 20px;
+    z-index: 36;
+    float: right;
+    background-image: url(../img/mag_glass.png);
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+*/
+
+  /**Button Top**/
+  .top {
+    border-radius: 6px;
+    border-color: rgba(254, 76, 104, 0.53);
+    background-color: rgb(245, 28, 63);
+    box-shadow: 0px 2px 0px 0px rgb(254, 81, 109);
+    left: 146px;
+    top: 870px;
+    width: 100%;
+    height: 100%;
+    z-index: 21;
+    color: white;
+    font-size: 4vw;
+    text-align: center;
+  }
+
+  /**Button back and Home**/
+  .back-home {
+    border-radius: 6px;
+    border-color: rgb(52, 52, 52);
+    background-color: rgb(30, 30, 30);
+    box-shadow: 0px 2px 0px 0px rgb(64, 64, 64);
+    left: 27px;
+    top: 870px;
+    width: 100%;
+    height: 100%;
+    z-index: 16;
+    color: white;
+    font-size: 4vw;
+    text-align: center;
+  }
+
+  /**FOOTER CSS**/
+
+  /**Fixed Footer**/
+
+  .footer {
+    background-image: url(../img/footer.jpg);
+    width:100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    padding-top:10px;
+  }
+
+  .astro-footer {
+    width: 80px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    bottom: -23%;
+    padding-bottom:10px;
+  }
+
+  .ftext {
+    color:white;
+    font-size: 7vw;
+    margin-top:10px;
+  }
+
+  .ftext:hover {
+    color: white;
+  }
+
+}

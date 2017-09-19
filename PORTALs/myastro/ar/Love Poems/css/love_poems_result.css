@@ -1,0 +1,35 @@
+/**LOVE SYMPATHIES RESULT CSS**/
+
+.poem-result {
+  background-image: url(../img/main_image_poems.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.poem-result-title {
+  color: black;
+  font-family: 'Lobster', cursive;
+  font-size: 15vw;
+  text-align: center;
+  line-height: 1em;
+  padding: 20px 0;
+}
+
+.poem-name {
+  color: black;
+  font-size: 5vw;
+  margin-top:10px;
+}
+
+.poem-text-result {
+  height: 140px;
+  max-height: 426px;
+  overflow: auto;
+  text-align: center;
+  color: black;
+}
+

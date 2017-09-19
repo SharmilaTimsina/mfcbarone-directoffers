@@ -1,0 +1,57 @@
+/**SLICK SLIDER CSS**/
+
+.slick-prev:before {
+  content:none;
+}
+
+.slick-prev {
+  background-image: url(../img/arrow_p_left.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  content: none;
+  left: 7px;
+  top:50%;
+  z-index:99;
+  width: 13vw;
+  height: 13vw;
+}
+
+.slick-next:before {
+  content:none;
+}
+
+.slick-next {
+  background-image: url(../img/arrow3.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  content: none;
+  right: 7px;
+  z-index: 99;
+  width: 13vw;
+  height: 13vw;
+}
+
+.slick-next:hover, .slick-next:focus {
+  background-image: url(../img/arrow3.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slick-prev:hover, .slick-prev:focus {
+  background-image: url(../img/arrow_p_left.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/**SLIDER GIF BANNER**/
+
+.s-lover {
+  overflow:hidden;
+  width:100%;
+  height:auto;
+  margin: 5% 0;
+}

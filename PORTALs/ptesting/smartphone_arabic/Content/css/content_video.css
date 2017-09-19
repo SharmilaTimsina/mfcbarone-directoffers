@@ -1,0 +1,31 @@
+/**VIDEO SECTION**/
+
+.video-tag {/**CATEGORY TAG IN VIDEO CONTENT**/
+  display: block;
+  margin: 0 auto;
+  color: white;
+  background-color: #f51c3f;
+  padding: 8px;
+  width: 100%;
+  z-index: 99;
+  text-align: center;
+  position: relative;
+  transform: translateY(50%);
+  box-shadow: 1px 1px 9px 0px #777;
+  max-width: 70vw;
+  font-size: 6vw;
+}
+
+.video-background {/**VIDEO CATEGORY BACKGROUND**/
+  padding-top: 30px;
+  background-color: white;
+  width: 100%;
+  height: auto;
+  position: relative;
+  text-align: center;
+  font-size: 11px;
+}
+
+.video-background p {/**CATEGORY BACKGROUND FONT SIZE**/
+  font-size: 5.5vw;
+}

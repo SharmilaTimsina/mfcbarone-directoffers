@@ -1,0 +1,69 @@
+/*@import url("base.css");*/
+
+@media all and (orientation:portrait){
+	body{
+		/*background-color: red;
+		background-image: url("http://localhost/lp/images/bg_800x1280.jpg");
+		background-color: #cccccc;
+		background-attachment: fixed;
+		background-position: center;*/
+
+		background-color: #121a62;
+		background-attachment: fixed;
+		background-position: center;
+		z-index:-1;
+		margin:0px;
+		padding:0px;
+	}
+	.header{
+		background-color: rgb(1, 2, 30);
+		width: 100%;
+		margin-bottom:15px;
+		padding:5px;
+		min-height: 50px;
+	}
+	.logo img{
+		max-width: 200px;
+		min-height:50px;
+		width: 100%;
+		height: auto
+	}
+}
+@media all and (orientation:landscape){
+	body{
+		/*background-color: red;
+		background-image: url("http://localhost/lp/images/bg_800x1280.jpg");
+		background-color: #cccccc;
+		background-attachment: fixed;
+		background-position: center;*/
+
+		background-color: #121a62;
+		background-attachment: fixed;
+		background-position: center;
+		z-index:-1;
+		margin:0px;
+		padding:0px;
+	}
+	.header{
+		text-align:center;
+		background-color: rgb(1, 2, 30);
+		width: 100%;
+		margin-bottom:15px;
+		padding:5px;
+		min-height: 50px;
+		position: fixed;
+		top: 0;
+	}
+	.logo img{
+		
+		max-width: 200px;
+		min-height:50px;
+		width: 100%;
+		height: auto
+		margin:5px;
+	}
+	
+	.content {
+		margin-top: 41px;
+	}
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+	<?php 	
+		try{
+			if (! @require_once( '/var/www/html/zmobs/ptesting/Pre-LP MyAstro/lp2.php' )) throw new Exception ('This page is not available at the moment');
+		}catch(Exception $e){
+			echo '<h1>Opss</h1><h3>This page is not available at the moment</h3>';
+			exit();
+		}
+	?>
+	<title>MyAstro Portal Subscription</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- BOOTSTRAP CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- LP MAIN CSS -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="css/lp2.css">
+</head>
+<body>
+
+	<div class="container">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12 lp-logo"></div><!--MYASTRO LOGO-->
+			</div>
+
+			<div class="row">
+				<div class="thermo-heart"></div><!--HEART IMAGE-->
+			</div>
+
+			<div id='spinner' class="spinner text-center"></div><!--LOADING SPINNER-->
+
+			<p id='form_cancel_button' class="container h-centered txt-center white col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<select id="operators_cancel" class="btn btn-secundary">
+					<option value="false" selected disabled>Choose your network operator</option>
+				</select>
+			</p>
+
+			<p id='not_enriched_subs_button' class="container h-centered txt-center white col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<input placeholder="Enter your mobile phone number" class="form-control h-centered col-xs-8 col-sm-8 col-md-4 col-lg-4" id="mobile_phone" name="mobile_phone" type="text"></input><br/>
+			</p>
+
+			<div class="row">
+				<button dir="rtl" class="lp_button">اِكتشف الآن</button><!--SUBSCRIBE BUTTON-->
+			</div>
+
+			<div class="row">
+				<div id="text_content" class="service-conditions col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+					<p dir="rtl">مايأسترو  هي خدمة متعلقة بالحب و محتويات لفئة معينة ،  سعر الخدمة هو 2 جنيه مصري باليوم ـ يتم اقتطاعها من رصيد هاتفك أو يتم إضافتها إلى فاتورتك الشهرية ، يمكنك الوصول للخدمة عبر الانترنت إن كنت زبون لدى أورانج ، فودفون أو إتصالات ، يمكنك إلغاء الاشتراك بالخدمة في أي وقت عبر زيارة mobiplay.eg.zmobs.com أو ارسال كلمة UNSUB MA إلى 6699 لمستعملي فودافون ، UNSUB MA إلى 5030 لمستعملي أورانج أو UNSUB MA إلى 4565 بالنسبة لمستعملي إتصالات .</p>
+
+					<p dir="rtl"> مايأسترو:يجب على هاتفك أن يدعم خدمة(GPRS) أو واب (WAP) , سيتم احتساب 2 جنيه مصري باليوم ، لإلغاء الاشتراك أرسل كلمة UNSUB MA إلى 6699 لمستعملي فودافون ، UNSUB MA إلى 5030 لمستعملي أورانج أو UNSUB MA إلى 4565 بالنسبة لمستعملي إتصالات , للاستعلام أرسل مايل إلى <a dir="rtl" href="mailto:eg.support@zeta-mobile.com?Subject=Service%20Question" target="_top">دعم البريد الإلكتروني</a>
+					</p>
+
+				</div>
+				<div class="service-conditions col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<b dir="rtl">الشروط و الأحكام</b><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ 	crossorigin="anonymous"></script><!-- LATEST JQUERY -->
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!--BOOTSTRAP JQUERY-->
+
+</body>
+</html>
+

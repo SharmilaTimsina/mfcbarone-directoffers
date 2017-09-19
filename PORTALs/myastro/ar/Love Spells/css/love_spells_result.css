@@ -1,0 +1,36 @@
+/**LOVE SYMPATHIES RESULT CSS**/
+
+.spell-result {
+  background-image: url(../img/main_image_spells.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.spell-result-title {
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 15vw;
+  text-align: center;
+  line-height: 1em;
+  padding: 20px 0;
+
+}
+
+.spell-text-result {
+  height: auto;
+  max-height: 426px;
+  overflow: auto;
+  text-align: center;
+  color:white;
+  margin-top:5px;
+}
+
+.spell-question {
+  font-weight: 700;
+  font-size: 5.1vw;
+}
+

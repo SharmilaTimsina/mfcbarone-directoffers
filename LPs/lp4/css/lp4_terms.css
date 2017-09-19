@@ -1,0 +1,19 @@
+html {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+body {
+	height: auto;
+	background-image: url(../../lp4/img/thermo_fundo.jpg);
+	background-size: cover;
+	background-position: center; 
+}
+
+.brown {
+	color:#980129;
+}
+
+.lp3_terms_text {
+	color:black;
+}

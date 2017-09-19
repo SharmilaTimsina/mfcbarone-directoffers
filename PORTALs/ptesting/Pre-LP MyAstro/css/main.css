@@ -1,0 +1,166 @@
+html {
+    width:100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+a {
+  color: black;
+  font-weight: 700;
+}
+
+/**LP BACKGROUND**/
+
+body {
+	background-image: url(../img/pre_lp_desktop.jpg); 
+	background-size: cover;
+	background-position: center; 
+  min-height: 100vh;
+  height: 100vh;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+}
+
+/**MYASTRO LOGO**/
+
+.lp-logo {
+	background-image: url(../img/logo_bigger.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 110px;
+    height: 50px;
+    text-align: center;
+}
+
+/**LOADING SPINNER**/
+
+.loader_zeta{
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #0080f9; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/**THERMOMETER HEART**/
+
+.thermo-heart {
+	background-image: url(../img/thermo-heart.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: block;
+	margin: 0 auto;
+	width: 30vw;
+    height: 25vw;
+}
+
+/**ERROR MESSAGE**/
+
+.error_msg {
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/**NETWORK OPERATOR**/
+
+.network-input {
+  width: 100%;
+  margin-top:10px;
+}
+
+/**PIN CODE INPUT**/
+
+.pin_code {
+  margin-bottom: 10px;
+}
+
+/**LP BUTTON**/
+
+.lp_button {
+  border-radius: 10px;
+  background-image: -moz-linear-gradient( 90deg, rgb(0,137,254) 0%, rgb(0,83,221) 99%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(0,137,254) 0%, rgb(0,83,221) 99%);
+  background-image: -ms-linear-gradient( 90deg, rgb(0,137,254) 0%, rgb(0,83,221) 99%);
+  box-shadow: 0px 3px 0px 0px rgb(0, 73, 146);
+  border-color: rgb(0, 123, 245);
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  top: 100%;
+  width: 30vw;
+  height: 7vw;
+  z-index: 24;
+  font-size: 5vw;
+  font-family: "Arial";
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.41);
+  margin-bottom: 10px;
+}
+
+/**SERVICE CONDITIONS**/
+
+.service-conditions {
+	text-align: center;
+	color:white;
+	font-size: 3vw;
+  padding:15px 0;
+}
+
+/**TERMS LP PAGE**/
+
+.black {
+      color: black;
+      font-weight: 700;
+  }
+
+/**FIXED FOOTER CSS**/
+
+.fixed-footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 5px;
+    height: 30px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/**CSS FO MOBILE**/
+
+@media screen and (max-width: 451px) {
+
+	.thermo-heart {
+		width: 70vw;
+		height: 46vw;
+	}
+
+	.lp_button {
+		width: 60vw;
+		height: 15vw;
+		font-size: 8vw;
+	}
+
+}
+
